@@ -1,0 +1,97 @@
+---
+swagger: "2.0"
+info:
+  description: "Java httpbin apis"
+  version: "1.0.0"
+  title: "Java httpbin apis"
+  termsOfService: "https://github.com/jibijose/httpbin"
+  contact:
+    name: "Jibi Jose"
+    url: "https://httpbin.org"
+    email: "jibijose@yahoo.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.wordnik.com"
+basePath: "/api"
+tags:
+- name: "Health endpoints"
+- name: "Status codes endpoints"
+schemes:
+- "http"
+- "https"
+paths:
+  /cpu/{percentage}/{time}:
+    get:
+      operationId: "cpu"
+      parameters:
+      - name: "percentage"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        default:
+          description: "successful operation"
+  /delay/{unit}/{time}:
+    get:
+      operationId: "delay"
+      parameters:
+      - name: "unit"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        default:
+          description: "successful operation"
+  /health:
+    get:
+      tags:
+      - "Health endpoints"
+      summary: "Health api"
+      description: ""
+      operationId: "health"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+  /memory/{bytes}/{time}:
+    get:
+      operationId: "memory"
+      parameters:
+      - name: "bytes"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        default:
+          description: "successful operation"
+  /status/{code}:
+    get:
+      tags:
+      - "Status codes endpoints"
+      summary: "Status code api"
+      description: ""
+      operationId: "statusCode"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
