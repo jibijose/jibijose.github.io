@@ -1,0 +1,108 @@
+[Event "ChessMate 2012 December"]
+[Date "2012.12.16"]
+[Round "1"]
+[White "Jibi Jose"]
+[Black "Arjun Sarja (Cisco)"]
+[Result "0-1"]
+[TimeControl "900"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 e6 7. f4 Nc6 8. Nxc6
+bxc6 9. Qf3? (9. e5) 9... Qb6 10. O-O-O Rb8 11. b3 d5 12. e5?! Nd7 13. Na4
+Ba3+ 14. Kb1 Qa5 15. Qc3? Qxa4 16. f5 Qg4 0-1
+
+
+[Event "ChessMate 2012 December"]
+[Date "2012.12.16"]
+[Round "2"]
+[White "Shalini (Mindtree)"]
+[Black "Jibi Jose"]
+[Result "0-1"]
+[TimeControl "900"]
+
+1. e4 c5 2. Nf3 d6 3. Bc4 Nf6 4. d3 Nc6 5. Nc3 e6 6. Bg5 Be7 7. Qe2 O-O 8. e5
+dxe5 9. Nxe5 Nd4 10. O-O-O?? Nxe2+ 11. Nxe2 Qc7 12. Bf4 Nh5 13. g4 Nxf4 14. Nxf4
+Qxe5 15. Nh5 a6 16. a3 b5 17. Bb3 Qg5+ 18. Kb1 g6 19. Rhg1 Kh8 20. Rg2 gxh5 21.
+h3 Bb7 22. Rgg1 Bf6 23. Rde1 Bd4 24. Re2 Bf3 0-1
+
+
+[Event "ChessMate 2012 December"]
+[Date "2012.12.16"]
+[Round "3"]
+[White "Jibi Jose"]
+[Black "Anish (Cognizant)"]
+[Result "0-1"]
+[TimeControl "900"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 d6 8. c3
+Bg4 9. d3 O-O 10. Be3 Na5 11. Bc2 c5 12. Nbd2 Qc7 13. h3 Bh5 14. Nf1 Nc6 15.
+Ng3 Bg6 16. d4 (16. Nh4!) cxd4 17. cxd4 exd4 18. Nxd4 Nxd4 19. Bxd4 Rac8 20. Rc1 d5 21.
+Bb1?! (21. Qd2) Qxc1 22. Qxc1 Rxc1 23. Rxc1 Nxe4 24. Nxe4 Bxe4 25. Bxe4 dxe4 26. Rc6 (26. Rc7) Ra8
+27. Kf1 f5 28. Ke2 Rd8 29. Bc3 b4 30. Bd2 a5 31. Re6 Kf7?! (31... Bf6) 32. Re5 g6 33. Rxa5 b3
+34. a3 Rd3?! 35. Rb5 Ke6 36. Bb4 (36. a4!) Bf6 37. Rb6+ Kf7 38. Rb7+ Ke6 39. Rb6+ Kf7 40.
+Rb7+ Ke6 41. Rb6+ 1/2-1/2
+
+
+[Event "ChessMate 2012 December"]
+[Date "2012.12.16"]
+[Round "4"]
+[White "Player4"]
+[Black "Jibi Jose"]
+[Result "0-1"]
+[TimeControl "900"]
+
+1. e4 c5 2. Nf3 d6 3. Bc4 Nc6 4. O-O Nf6 5. Re1 e6 6. c3? Nxe4 7. d4 d5 8. Bb5
+Be7 9. Ne5 Bd7 10. Bxc6 Bxc6 11. Nxc6 bxc6 12. Be3 cxd4 13. Bxd4 O-O 14. Nd2
+Nxd2 15. Qxd2 Bf6 16. Re3 Re8 17. Bxf6 Qxf6 18. Rf3 Qe7 19. Re1 e5 20. Rg3 e4
+21. Qh6 f6 22. Qh5 Qf7 23. Qf5 Re5 24. Qf4 Rae8 25. h4 c5 26. h5 h6?! 27. Rh3 d4
+28. Rh4 d3 29. g4 Qxa2! 30. Qd2 a5 31. Rh3 a4 32. Kg2 a3 33. Rhh1 axb2 34. Rb1
+Rb8 35. Kg3 c4 36. Rhe1 Qb3 37. f4 exf3 38. Rxe5 fxe5 39. Kxf3 Qc2 40. Qe1 Re8
+41. Qh1 e4+ 42. Ke3 Qxc3 43. Qg2 d2+ 44. Kf2 e3+ 45. Kg1 Qc1+ 46. Rxc1 bxc1=Q+
+47. Kh2 d1=Q 48. Qf3 Qh1+ 49. Qxh1 Qxh1+ 50. Kxh1 e2 51. Kg2 e1=Q 52. Kf3 Rf8+
+53. Kg2 0-1
+
+
+[Event "ChessMate 2012 December"]
+[Date "2012.12.16"]
+[Round "5"]
+[White "Jibi Jose"]
+[Black "Aman Chandra (Wipro)"]
+[Result "0-1"]
+[TimeControl "900"]
+
+1. e4 e5 2. Nf3 Nf6 3. Nc3 Bb4 4. Qe2?! O-O 5. g3 d5 6. Nxd5 Nxd5 7. exd5 Qxd5 8.
+Bg2 Bg4 9. O-O (9. h3) Nc6 (9... e4!) 10. c3 (10. d3 Nd4 11. Nxd4 Bxe2 12. Bxd5 exd4 
+13. Bxb7 Rae8 14. Bf4 Bxf1 15. Kxf1 Bd6 16. Bc1 a5
+17. Bf3 Re6 18. c3 Bc5 19. c4 {-0.29 Position is playable for white because of pawn
+structure and 2 bishops.}) e4 0-1
+
+
+[Event "ChessMate 2012 December"]
+[Date "2012.12.16"]
+[Round "6"]
+[White "(Thomson Reuters)"]
+[Black "Jibi Jose"]
+[Result "0-1"]
+[TimeControl "900"]
+
+1. f4 d5 2. Nf3 Nf6 3. b3 g6 4. Bb2 Bg7 5. e3 O-O 6. Bd3 c5 7. Nc3 Nc6 8. a3 a6
+9. O-O b5 10. Qe1 c4 11. Be2 Bf5 (12... d4) 12. Rc1 Ne4 (12... d4) 13. Nh4 Nxc3 14. Bxc3 Bxc3 15.
+dxc3 Be4! 16. f5 Qd6 17. Bf3 Bxf5 18. Nxf5 gxf5 19. Rd1 e6 20. Qh4 Qe5! 21. Qe1
+Kh8 0-1
+
+
+[Event "ChessMate 2012 December"]
+[Date "2012.12.16"]
+[Round "7"]
+[White "Jibi Jose"]
+[Black "Anshul Sharma (Sapient)"]
+[Result "1-0"]
+[TimeControl "900"]
+
+1. e4 e5 2. Nf3 d6 3. d4 exd4 4. Nxd4 Nf6 5. Nc3 Bd7 6. Bd3 Nc6 7. Be3 Be7 ( 7... Ng4) 
+8. f3 Nb4?! 9. Bc4 a6 10. a3 Nc6 11. Qd2 b5 12. Ba2 Qc8?! 13. Nd5! Nxd5 14. Bxd5 Nxd4
+15. Bxa8 Qxa8 ( 15... Nxf3+) 16. Bxd4 O-O 17. Qc3! f6 18. O-O (18. Qxc7) Qb7 19. Bf2 Be8 20. Rad1 Bf7 21.
+Rfe1 Rc8 22. f4 Bg6 23. Qf3 c6 24. Bg3 Qb6+ 25. Kh1 Rf8 26. f5 Bf7 27. Bxd6
+Bxd6 28. Rxd6 Qc5 29. Rd2 Qe5 30. c3 Re8 31. Qg3 Qe7 32. Qg4 Qe5 33. Rd7 Rf8
+34. Red1 c5 35. h4 g6 36. h5 g5 37. h6 b4 38. cxb4 cxb4 39. R1d2 bxa3 40. bxa3
+Qa1+ 41. Kh2 Qxa3 42. e5! 1-0
+
