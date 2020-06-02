@@ -12,6 +12,17 @@
           "intellij": "444"
         },
         "description": "clone caret to upper position"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl, Ctrl + Down"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "clone caret to lower position"
       }
     ]
   }
