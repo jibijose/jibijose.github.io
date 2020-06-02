@@ -311,7 +311,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌥ + ⌘ + L"
         },
         "description": "Reformat code"
       },
