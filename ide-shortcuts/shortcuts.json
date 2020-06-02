@@ -108,184 +108,156 @@
     "shortcuts": [
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "Ctrl + Space",
+          "intellij": "Ctrl + Space"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "Ctrl + Space",
-        "intellij": "Ctrl + Space",
         "description": "Basic code completion (the name of any class,method or variable)"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Shift + Space"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Shift + Space",
         "description": "Smart code completion (filters the list of methods and variables by expected type)"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Shift + Enter"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Shift + Enter",
         "description": "Complete statement"
       },
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "Ctrl + Shift + Space",
+          "intellij": "Ctrl + P"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "Ctrl + Shift + Space",
-        "intellij": "Ctrl + P",
         "description": "Parameter info (within method call arguments)"
       },
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "F2",
+          "intellij": "Ctrl + Q"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "F2",
-        "intellij": "Ctrl + Q",
         "description": "Quick documentation lookup"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Shift + F1"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Shift + F1",
         "description": "External Doc"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + mouse over code"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + mouse over code",
         "description": "Brief Info"
       },
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "F2",
+          "intellij": "Ctrl + F1"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "F2",
-        "intellij": "Ctrl + F1",
         "description": "Show descriptions of error or warning at caret"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Alt + Insert"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Alt + Insert",
         "description": "Generate code... (Getters, Setters, Constructors, hashCode/equals, toString)"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + O"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + O",
         "description": "Override methods"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + I"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + I",
         "description": "Implement methods"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Alt + T"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Alt + T",
         "description": "Surround with... (if..else, try..catch, for, synchronized, etc.)"
       },
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "Ctrl + Shift + C",
+          "intellij": "Ctrl + NumPad/"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "Ctrl + Shift + C",
-        "intellij": "Ctrl + NumPad/",
         "description": "Comment/uncomment with line comment"
       },
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "Ctrl + Shift + /",
+          "intellij": "Ctrl + Shift + NumPad/"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "Ctrl + Shift + /",
-        "intellij": "Ctrl + Shift + NumPad/",
         "description": "Comment/uncomment with block comment"
       },
       {
@@ -2024,7 +1996,7 @@
       {
         "windows": {
           "eclipse": "",
-          "intellij": "Ctrl + Tab",
+          "intellij": "Ctrl + Tab"
         },
         "mac": {
           "eclipse": "",
