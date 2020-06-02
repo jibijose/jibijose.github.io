@@ -27,92 +27,78 @@
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Shift + Alt + Click"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Shift + Alt + Click",
         "description": "add/delete caret position"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Shift + Alt + Middle-Mouse-Button"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Shift + Alt + Middle-Mouse-Button",
         "description": "select column"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Middle-Mouse-Button + Mouse-Movement"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Middle-Mouse-Button + Mouse-Movement",
         "description": "column-selection-mode"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Shift + Alt + Insert"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Shift + Alt + Insert",
         "description": "Switch between column/line-selection-mode"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Esc"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Esc",
         "description": "leave multiline mode"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Alt + J / Alt + Shift + J"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Alt + J / Alt + Shift + J",
         "description": "select/unselect next occurence"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Alt + Shift + J"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Alt + Shift + J",
         "description": "select all occurences"
       }
     ]
