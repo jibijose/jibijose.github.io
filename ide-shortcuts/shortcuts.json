@@ -5,7 +5,7 @@
       {
         "windows": {
           "eclipse": "",
-          "intellij": "222Ctrl, Ctrl + Up"
+          "intellij": "Ctrl, Ctrl + Up"
         },
         "mac": {
           "eclipse": "",
@@ -100,6 +100,1937 @@
           "intellij": ""
         },
         "description": "select all occurences"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Editing",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Space",
+        "intellij": "Ctrl + Space",
+        "description": "Basic code completion (the name of any class,method or variable)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + Space",
+        "description": "Smart code completion (filters the list of methods and variables by expected type)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + Enter",
+        "description": "Complete statement"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + Space",
+        "intellij": "Ctrl + P",
+        "description": "Parameter info (within method call arguments)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F2",
+        "intellij": "Ctrl + Q",
+        "description": "Quick documentation lookup"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Shift + F1",
+        "description": "External Doc"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + mouse over code",
+        "description": "Brief Info"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F2",
+        "intellij": "Ctrl + F1",
+        "description": "Show descriptions of error or warning at caret"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + Insert",
+        "description": "Generate code... (Getters, Setters, Constructors, hashCode/equals, toString)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + O",
+        "description": "Override methods"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + I",
+        "description": "Implement methods"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Alt + T",
+        "description": "Surround with... (if..else, try..catch, for, synchronized, etc.)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + C",
+        "intellij": "Ctrl + NumPad/",
+        "description": "Comment/uncomment with line comment"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + /",
+        "intellij": "Ctrl + Shift + NumPad/",
+        "description": "Comment/uncomment with block comment"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + Up",
+        "intellij": "Ctrl + W",
+        "description": "Select successively increasing code blocks"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + Down",
+        "intellij": "Ctrl + Shift + W",
+        "description": "Decrease current selection to previous state"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + Q",
+        "description": "Context info"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + 1",
+        "intellij": "Alt + Enter",
+        "description": "Show intention actions and quick-fixes"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + F",
+        "intellij": "Ctrl + Alt + L",
+        "description": "Reformat code"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + O",
+        "intellij": "Ctrl + Alt + O",
+        "description": "Optimize imports"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Alt + I",
+        "description": "Auto-indent line(s)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Tab / Shift + Tab",
+        "description": "Indent/unindent selected lines"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + X or Shift + Delete",
+        "description": "Cut current line or selected block to clipboard"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + C or Ctrl + Insert",
+        "description": "Copy current line or selected block to clipboard"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + V or Shift + Insert",
+        "description": "Paste from clipboard"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + V",
+        "description": "Paste from recent buffers..."
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Alt + Up",
+        "intellij": "Ctrl + D",
+        "description": "Duplicate current line or selected block"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + D",
+        "intellij": "Ctrl + Y",
+        "description": "Delete line at caret"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + J",
+        "description": "Smart line join"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Enter",
+        "description": "Smart line split"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Shift + Enter",
+        "intellij": "Shift + Enter",
+        "description": "Start new line"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + X / Y",
+        "intellij": "Ctrl + Shift + U",
+        "description": "Toggle case for word at caret or selected block"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + ] / [",
+        "description": "Select till code block end/start"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Delete",
+        "intellij": "Ctrl + Delete",
+        "description": "Delete to word end"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Backspace",
+        "description": "Delete to word start"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + NumPad+/-",
+        "intellij": "Ctrl + NumPad+/-",
+        "description": "Expand/collapse code block"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + NumPad*",
+        "intellij": "Ctrl + Shift + NumPad+",
+        "description": "Expand all"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + NumPad/",
+        "intellij": "Ctrl + Shift + NumPad-",
+        "description": "Collapse all"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + W",
+        "intellij": "Ctrl + F4",
+        "description": "Close active editor tab"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Up",
+        "intellij": "Ctrl + Shift + Up",
+        "description": "Move line up"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Down",
+        "intellij": "Ctrl + Shift + Down",
+        "description": "Move line down"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl  + Up",
+        "intellij": "",
+        "description": "Scroll Line up"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl  + Down",
+        "intellij": "",
+        "description": "Scroll Line down"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Search and Replace",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Double Shift",
+        "description": "Search everywhere"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + F",
+        "intellij": "Ctrl + F",
+        "description": "Find"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + K",
+        "intellij": "F3",
+        "description": "Find next"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + K",
+        "intellij": "Shift + F3",
+        "description": "Find previous"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + F",
+        "intellij": "Ctrl + R",
+        "description": "Replace"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + H",
+        "intellij": "Ctrl + Shift + F",
+        "description": "Find in path"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + R",
+        "description": "Replace in path"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + S",
+        "description": "Search structurally (Ultimate Edition only)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + M",
+        "description": "Replace structurally (Ultimate Edition only)"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Usage search",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + G",
+        "intellij": "Alt + F7",
+        "description": "Find usages"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + G",
+        "intellij": "Ctrl + F7",
+        "description": "Find usages in file"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + F7",
+        "description": "Highlight usages in file"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Alt + F7",
+        "description": "Show usages"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + U",
+        "intellij": "",
+        "description": "Show occurences in File"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Compile and Run",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + B",
+        "intellij": "Ctrl + F9",
+        "description": "Make project (compile modifed and dependent)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + F9",
+        "description": "Compile selected file, package or module"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + Shift + F10",
+        "description": "Select configuration and run"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + Shift + F9",
+        "description": "Select configuration and debug"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + F11",
+        "intellij": "Shift + F10",
+        "description": "Run"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Shift + F9",
+        "description": "Debug"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + F10",
+        "description": "Run context configuration from editor"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Debugging",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F6",
+        "intellij": "F8",
+        "description": "Step over"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F5",
+        "intellij": "F7",
+        "description": "Step into"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Shift + F7",
+        "description": "Smart step into"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F7",
+        "intellij": "Shift + F8",
+        "description": "Step out"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + R",
+        "intellij": "Alt + F9",
+        "description": "Run to cursor"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + U",
+        "intellij": "Alt + F8",
+        "description": "Evaluate expression"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F8",
+        "intellij": "F9",
+        "description": "Resume program"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + B",
+        "intellij": "Ctrl + F8",
+        "description": "Toggle breakpoint"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + Q, B",
+        "intellij": "Ctrl + Shift + F8",
+        "description": "View breakpoints"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Navigation",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + T",
+        "intellij": "Ctrl + N",
+        "description": "Go to class"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + R",
+        "intellij": "Ctrl + Shift + N",
+        "description": "Go to file"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + T",
+        "description": "Navigating between Test and Test-Subject"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Alt + Shift + N",
+        "description": "Go to symbol"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl (+ Shift) + Tab",
+        "intellij": "Alt + Right",
+        "description": "Go to next editor tab"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl (+ Shift) + Tab",
+        "intellij": "Alt + Left",
+        "description": "Go to previous editor tab"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + W",
+        "intellij": "Alt + F1",
+        "description": "Show file in ... (Package Explorer, Windows Explorer, etc.)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "F12",
+        "description": "Go back to previous tool window"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Esc",
+        "description": "Go to editor (from tool window)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Shift + Esc",
+        "description": "Hide active or last active window"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + F4",
+        "description": "Close active run/messages/find/... tab"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + L",
+        "intellij": "Ctrl + G",
+        "description": "Go to line"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + E",
+        "intellij": "Ctrl + E",
+        "description": "Recent files popup"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Right",
+        "intellij": "Ctrl + Alt + Right",
+        "description": "Navigate forward"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Left",
+        "intellij": "Ctrl + Alt + Left",
+        "description": "Navigate back"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + Backspace",
+        "description": "Navigate to last edit location"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + F1",
+        "description": "Select current file or symbol in any view"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F3",
+        "intellij": "Ctrl + B",
+        "description": "Go to declaration"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Click",
+        "intellij": "Ctrl + Click",
+        "description": "Go to declaration"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + T",
+        "intellij": "Ctrl + Alt + B",
+        "description": "Go to implementation(s)"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + I",
+        "description": "Open quick definition lookup"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + B",
+        "description": "Go to type declaration"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + U",
+        "description": "Go to super-method/super-class"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + Up",
+        "intellij": "Alt + Up",
+        "description": "Go to previous method"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + Down",
+        "intellij": "Alt + Down",
+        "description": "Go to next method"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Shift + P",
+        "intellij": "Ctrl + ] / [",
+        "description": "Move to code block end/start"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + O",
+        "intellij": "Ctrl + F12",
+        "description": "File structure popup"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "F4",
+        "intellij": "Ctrl + H",
+        "description": "Type hierarchy"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Shift + H",
+        "description": "Method hierarchy"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + Alt + H",
+        "intellij": "Ctrl + Alt + H",
+        "description": "Call hierarchy"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + . / Ctrl + ,",
+        "intellij": "F2 / Shift + F2",
+        "description": "Next/previous highlighted error"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "F4 / Ctrl + Enter",
+        "description": "Edit source / View source"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + B",
+        "intellij": "Alt + Home",
+        "description": "Show navigation bar"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Bookmarks",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "F11",
+        "description": "Toggle bookmark"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + F11",
+        "description": "Toggle bookmark with mnemonic"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + #[0-9]",
+        "description": "Go to numbered bookmark"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Shift + F11",
+        "description": "Show bookmarks"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Refactoring",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "F5",
+        "description": "Copy"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "F6",
+        "description": "Move"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + Delete",
+        "description": "Safe Delete"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + R",
+        "intellij": "Shift + F6",
+        "description": "Rename"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + C",
+        "intellij": "Ctrl + F6",
+        "description": "Change Signature"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + I",
+        "intellij": "Ctrl + Alt + N",
+        "description": "Inline"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + M",
+        "intellij": "Ctrl + Alt + M",
+        "description": "Extract Method"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + 2, L",
+        "intellij": "Ctrl + Alt + V",
+        "description": "Extract Variable"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Alt + Shift + L",
+        "intellij": "Ctrl + Alt + V",
+        "description": "Extract Variable"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "Ctrl + 2, F",
+        "intellij": "Ctrl + Alt + F",
+        "description": "Extract Field"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Alt + C",
+        "description": "Extract Constant"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Alt + P",
+        "description": "Extract Parameter"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "VCS / Local History",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + K",
+        "description": "Commit project to VCS"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + T",
+        "description": "Update project from VCS"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + Shift + C",
+        "description": "View recent changes"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Alt + BackQuote `",
+        "description": "'VCS' quick popup"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "Live Templates",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + Alt + J",
+        "description": "Surround with Live Template"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "Ctrl + J",
+        "description": "Insert Live Template"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "iter",
+        "description": "Iteration according to Java SDK 1.5 style"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "inst",
+        "description": "Check object type with instanceof and downcast it"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "itco",
+        "description": "Iterate elements of java.util.Collection"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "itit",
+        "description": "Iterate elements of java.util.Iterator"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "itli",
+        "description": "Iterate elements of java.util.List"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "psf",
+        "description": "public static final"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "eclipse": "",
+        "intellij": "thr",
+        "description": "throw new"
+      }
+    ]
+  },
+  {
+    "shortcutScope": "General",
+    "shortcuts": [
+      {
+        "windows": {
+          "eclipse": "Ctrl + M",
+          "intellij": "Alt + #[0-9]"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Open corresponding tool window"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl + S"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Save all"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl + Alt + Y"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Synchronize"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl + Shift + F12"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Toggle maximizing editor"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Alt + Shift + F"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Add to Favorites"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Alt + Shift + I"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Inspect current file with current profile"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl + BackQuote (`)"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Quick switch current scheme"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl + Alt + S"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Open Settings dialog"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl + Alt + Shift + S"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Open Project Structure dialog"
+      },
+      {
+        "windows": {
+          "eclipse": "Ctrl + 3",
+          "intellij": "Ctrl + Shift + A"
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Find Action"
+      },
+      {
+        "windows": {
+          "eclipse": "",
+          "intellij": "Ctrl + Tab",
+        },
+        "mac": {
+          "eclipse": "",
+          "intellij": ""
+        },
+        "description": "Switch between tabs and tool window"
       }
     ]
   }
