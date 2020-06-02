@@ -4,12 +4,12 @@
     "shortcuts": [
       {
         "windows": {
-          "eclipse": "",
+          "eclipse": "1111",
           "intellij": "222Ctrl, Ctrl + Up"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "3333",
+          "intellij": "444"
         },
         "description": "clone caret to upper position"
       }
