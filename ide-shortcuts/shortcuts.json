@@ -1931,145 +1931,123 @@
     "shortcuts": [
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "Ctrl + M",
+          "intellij": "Alt + #[0-9]"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "Ctrl + M",
-        "intellij": "Alt + #[0-9]",
         "description": "Open corresponding tool window"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + S"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + S",
         "description": "Save all"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Alt + Y"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Alt + Y",
         "description": "Synchronize"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Shift + F12"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Shift + F12",
         "description": "Toggle maximizing editor"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Alt + Shift + F"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Alt + Shift + F",
         "description": "Add to Favorites"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Alt + Shift + I"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Alt + Shift + I",
         "description": "Inspect current file with current profile"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + BackQuote (`)"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + BackQuote (`)",
         "description": "Quick switch current scheme"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Alt + S"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Alt + S",
         "description": "Open Settings dialog"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Alt + Shift + S"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Alt + Shift + S",
         "description": "Open Project Structure dialog"
       },
       {
         "windows": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "Ctrl + 3",
+          "intellij": "Ctrl + Shift + A"
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "Ctrl + 3",
-        "intellij": "Ctrl + Shift + A",
         "description": "Find Action"
       },
       {
         "windows": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "Ctrl + Tab",
         },
         "mac": {
           "eclipse": "",
           "intellij": ""
         },
-        "eclipse": "",
-        "intellij": "Ctrl + Tab",
         "description": "Switch between tabs and tool window"
       }
     ]
