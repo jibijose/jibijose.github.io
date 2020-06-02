@@ -3,6 +3,14 @@
     "shortcutScope": "Multiline Editing",
     "shortcuts": [
       {
+        "windows": {
+          "eclipse": "1111",
+          "intellij": "222Ctrl, Ctrl + Up"
+        },
+        "mac": {
+          "eclipse": "3333",
+          "intellij": "4444"
+        },
         "eclipse": "",
         "intellij": "Ctrl, Ctrl + Up",
         "description": "clone caret to upper position"

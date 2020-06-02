@@ -57,8 +57,10 @@
         <tbody ng-repeat="table in shortcutTables">
             <tr id="{{table.shortcutScope}}"><td><strong>{{ table.shortcutScope }}</strong></td><td></td><td></td></tr>
             <tr ng-repeat="shortcut in table.shortcuts | filter:search">
-                <td><span ng-bind-html="shortcut.eclipse | highlight:search"></span></td>
-                <td><span ng-bind-html="shortcut.intellij | highlight:search"></span></td>
+                <td><span ng-bind-html="shortcut.windows.eclipse | highlight:search"></span></td>
+                <td><span ng-bind-html="shortcut.windows.intellij | highlight:search"></span></td>
+                <td><span ng-bind-html="shortcut.mac.eclipse | highlight:search"></span></td>
+                <td><span ng-bind-html="shortcut.mac.intellij | highlight:search"></span></td>
                 <td><span ng-bind-html="shortcut.description | highlight:search"></span></td>
             </tr>
         </tbody>
