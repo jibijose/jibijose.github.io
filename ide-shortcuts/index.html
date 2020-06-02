@@ -43,10 +43,16 @@
         <thead>
         <tr>
             <td>
-                Eclipse
+                Windows Eclipse
             </td>
             <td>
-                IntelliJ
+                Windows IntelliJ
+            </td>
+            <td>
+                Mac Eclipse
+            </td>
+            <td>
+                Mac IntelliJ
             </td>
             <td>
                 Description
@@ -55,7 +61,7 @@
         </thead>
 
         <tbody ng-repeat="table in shortcutTables">
-            <tr id="{{table.shortcutScope}}"><td><strong>{{ table.shortcutScope }}</strong></td><td></td><td></td></tr>
+            <tr id="{{table.shortcutScope}}"><td><strong>{{ table.shortcutScope }}</strong></td><td></td><td></td><td></td><td></td></tr>
             <tr ng-repeat="shortcut in table.shortcuts | filter:search">
                 <td><span ng-bind-html="shortcut.windows.eclipse | highlight:search"></span></td>
                 <td><span ng-bind-html="shortcut.windows.intellij | highlight:search"></span></td>
