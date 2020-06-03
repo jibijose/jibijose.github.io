@@ -115,7 +115,8 @@
           "eclipse": "Ctrl + Space",
           "intellij": "⌃+Space"
         },
-        "description": "Basic code completion (the name of any class,method or variable)"
+        "description": "Basic code completion (the name of any class,method or variable)",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -126,7 +127,8 @@
           "eclipse": "",
           "intellij": "⌃+⇧+Space"
         },
-        "description": "Smart code completion (filters the list of methods and variables by expected type)"
+        "description": "Smart code completion (filters the list of methods and variables by expected type)",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -137,7 +139,8 @@
           "eclipse": "",
           "intellij": "⌘+⇧+Enter"
         },
-        "description": "Complete statement"
+        "description": "Complete statement",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -247,7 +250,8 @@
           "eclipse": "",
           "intellij": "⌘+/"
         },
-        "description": "Comment/uncomment with line comment"
+        "description": "Comment/uncomment with line comment",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -258,7 +262,8 @@
           "eclipse": "",
           "intellij": "⌘+⌥+/"
         },
-        "description": "Comment/uncomment with block comment"
+        "description": "Comment/uncomment with block comment",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -313,7 +318,8 @@
           "eclipse": "⌘ + Shift + F",
           "intellij": "⌥ + ⌘ + L"
         },
-        "description": "Reformat code"
+        "description": "Reformat code",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -324,7 +330,8 @@
           "eclipse": "⇧⌘O",
           "intellij": ""
         },
-        "description": "Optimize imports"
+        "description": "Optimize imports",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -604,7 +611,8 @@
           "eclipse": "⌘F",
           "intellij": "⌘+F"
         },
-        "description": "Find"
+        "description": "Find",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -648,7 +656,8 @@
           "eclipse": "⌃H",
           "intellij": "⌘+⇧+F"
         },
-        "description": "Find in path"
+        "description": "Find in path",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -675,7 +684,8 @@
           "eclipse": "",
           "intellij": "⌥+F7"
         },
-        "description": "Find usages"
+        "description": "Find usages",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -686,7 +696,8 @@
           "eclipse": "Cmd + Shift + G",
           "intellij": ""
         },
-        "description": "Find usages in file"
+        "description": "Find usages in file",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -697,7 +708,8 @@
           "eclipse": "",
           "intellij": ""
         },
-        "description": "Highlight usages in file"
+        "description": "Highlight usages in file",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -735,7 +747,8 @@
           "eclipse": "",
           "intellij": "⌘+F9"
         },
-        "description": "Make project (compile modifed and dependent)"
+        "description": "Make project (compile modifed and dependent)",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -779,7 +792,8 @@
           "eclipse": "⌥⌘X",
           "intellij": "⌃+⌥+R"
         },
-        "description": "Run"
+        "description": "Run",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -790,7 +804,8 @@
           "eclipse": "⌥⌃⌘D",
           "intellij": "⌃+⌥+D"
         },
-        "description": "Debug"
+        "description": "Debug",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -817,7 +832,8 @@
           "eclipse": "",
           "intellij": "F8"
         },
-        "description": "Step over"
+        "description": "Step over",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -861,7 +877,8 @@
           "eclipse": "",
           "intellij": "⌥+F9"
         },
-        "description": "Run to cursor"
+        "description": "Run to cursor",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -921,7 +938,8 @@
           "eclipse": "⌘ + Shift + T",
           "intellij": ""
         },
-        "description": "Go to class"
+        "description": "Go to class",
+        "highlight": "highlight"
       },
       {
         "windows": {
@@ -932,7 +950,8 @@
           "eclipse": "⌘ + Shift + R",
           "intellij": "⌘+⇧+O"
         },
-        "description": "Go to file"
+        "description": "Go to file",
+        "highlight": "highlight"
       },
       {
         "windows": {

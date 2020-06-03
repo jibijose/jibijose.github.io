@@ -9,6 +9,10 @@
     right: 20px;
 }
 
+td.highlight span{
+    background-color: yellow;
+}
+
 .container {
     padding-right: 200px;
     width: 100%;
