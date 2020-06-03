@@ -112,8 +112,8 @@
           "intellij": "Ctrl + Space"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "Ctrl + Space",
+          "intellij": "⌃+Space"
         },
         "description": "Basic code completion (the name of any class,method or variable)"
       },
@@ -124,7 +124,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌃+⇧+Space"
         },
         "description": "Smart code completion (filters the list of methods and variables by expected type)"
       },
@@ -135,7 +135,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+⇧+Enter"
         },
         "description": "Complete statement"
       },
@@ -146,7 +146,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+P"
         },
         "description": "Parameter info (within method call arguments)"
       },
@@ -157,7 +157,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌃+J"
         },
         "description": "Quick documentation lookup"
       },
@@ -245,7 +245,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+/"
         },
         "description": "Comment/uncomment with line comment"
       },
@@ -256,7 +256,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+⌥+/"
         },
         "description": "Comment/uncomment with block comment"
       },
@@ -321,7 +321,7 @@
           "intellij": "Ctrl + Alt + O"
         },
         "mac": {
-          "eclipse": "",
+          "eclipse": "⇧⌘O",
           "intellij": ""
         },
         "description": "Optimize imports"
@@ -601,8 +601,8 @@
           "intellij": "Ctrl + F"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "⌘F",
+          "intellij": "⌘+F"
         },
         "description": "Find"
       },
@@ -613,7 +613,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+G"
         },
         "description": "Find next"
       },
@@ -623,8 +623,8 @@
           "intellij": "Shift + F3"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "⇧⌘K",
+          "intellij": "⌘+⇧+G"
         },
         "description": "Find previous"
       },
@@ -634,8 +634,8 @@
           "intellij": "Ctrl + R"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "⌘F",
+          "intellij": "⌘+R"
         },
         "description": "Replace"
       },
@@ -645,8 +645,8 @@
           "intellij": "Ctrl + Shift + F"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "⌃H",
+          "intellij": "⌘+⇧+F"
         },
         "description": "Find in path"
       },
@@ -657,31 +657,9 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+⇧+R"
         },
         "description": "Replace in path"
-      },
-      {
-        "windows": {
-          "eclipse": "",
-          "intellij": "Ctrl + Shift + S"
-        },
-        "mac": {
-          "eclipse": "",
-          "intellij": ""
-        },
-        "description": "Search structurally (Ultimate Edition only)"
-      },
-      {
-        "windows": {
-          "eclipse": "",
-          "intellij": "Ctrl + Shift + M"
-        },
-        "mac": {
-          "eclipse": "",
-          "intellij": ""
-        },
-        "description": "Replace structurally (Ultimate Edition only)"
       }
     ]
   },
@@ -695,7 +673,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌥+F7"
         },
         "description": "Find usages"
       },
@@ -705,7 +683,7 @@
           "intellij": "Ctrl + F7"
         },
         "mac": {
-          "eclipse": "",
+          "eclipse": "Cmd + Shift + G",
           "intellij": ""
         },
         "description": "Find usages in file"
@@ -755,7 +733,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+F9"
         },
         "description": "Make project (compile modifed and dependent)"
       },
@@ -798,8 +776,8 @@
           "intellij": "Shift + F10"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "⌥⌘X",
+          "intellij": "⌃+⌥+R"
         },
         "description": "Run"
       },
@@ -809,8 +787,8 @@
           "intellij": "Shift + F9"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "⌥⌃⌘D",
+          "intellij": "⌃+⌥+D"
         },
         "description": "Debug"
       },
@@ -837,7 +815,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "F8"
         },
         "description": "Step over"
       },
@@ -848,7 +826,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "F7"
         },
         "description": "Step into"
       },
@@ -859,7 +837,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⇧+F7"
         },
         "description": "Smart step into"
       },
@@ -870,7 +848,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⇧+F8"
         },
         "description": "Step out"
       },
@@ -881,7 +859,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌥+F9"
         },
         "description": "Run to cursor"
       },
@@ -892,7 +870,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌥+F8"
         },
         "description": "Evaluate expression"
       },
@@ -903,7 +881,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "F9"
         },
         "description": "Resume program"
       },
@@ -914,7 +892,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+F8"
         },
         "description": "Toggle breakpoint"
       },
@@ -925,7 +903,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+⇧+F8"
         },
         "description": "View breakpoints"
       }
@@ -940,7 +918,7 @@
           "intellij": "Ctrl + N"
         },
         "mac": {
-          "eclipse": "",
+          "eclipse": "⌘ + Shift + T",
           "intellij": ""
         },
         "description": "Go to class"
@@ -951,8 +929,8 @@
           "intellij": "Ctrl + Shift + N"
         },
         "mac": {
-          "eclipse": "",
-          "intellij": ""
+          "eclipse": "⌘ + Shift + R",
+          "intellij": "⌘+⇧+O"
         },
         "description": "Go to file"
       },
@@ -1073,7 +1051,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": ""
+          "intellij": "⌘+E"
         },
         "description": "Recent files popup"
       },
@@ -1149,7 +1127,7 @@
           "intellij": "Ctrl + Alt + B"
         },
         "mac": {
-          "eclipse": "",
+          "eclipse": "Cmd + T",
           "intellij": ""
         },
         "description": "Go to implementation(s)"
@@ -1226,7 +1204,7 @@
           "intellij": "Ctrl + F12"
         },
         "mac": {
-          "eclipse": "",
+          "eclipse": "Cmd + O",
           "intellij": ""
         },
         "description": "File structure popup"
