@@ -310,7 +310,7 @@
           "intellij": "Ctrl + Alt + L"
         },
         "mac": {
-          "eclipse": "",
+          "eclipse": "⌘ + Shift + F",
           "intellij": "⌥ + ⌘ + L"
         },
         "description": "Reformat code"
