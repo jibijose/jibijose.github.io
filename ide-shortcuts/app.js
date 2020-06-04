@@ -5,7 +5,7 @@ function preg_quote(str, delimiter) {
 
 String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 var map = {};
-OSName = "Win"
+
 // app.js
 angular.module('ideShortcuts', ['ngSanitize','ngStorage'])
     .filter('highlight', function ($sce) {
