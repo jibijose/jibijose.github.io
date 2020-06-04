@@ -5,7 +5,7 @@ function preg_quote(str, delimiter) {
 
 String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 var map = {};
-
+OSName = "Win"
 // app.js
 angular.module('ideShortcuts', ['ngSanitize','ngStorage'])
     .filter('highlight', function ($sce) {
@@ -25,7 +25,7 @@ angular.module('ideShortcuts', ['ngSanitize','ngStorage'])
 
         var isModifierPressed = function (event) {
             if ( OSName == "MacOS" ) {
-                return event.ctrlKey || event.altKey || event.shiftKey || event.keyCode == 91;
+                return event.ctrlKey || event.altKey || event.shiftKey || isCmdKeyDown();
             } else {
                 return event.ctrlKey || event.altKey || event.shiftKey;
             }
@@ -37,25 +37,32 @@ angular.module('ideShortcuts', ['ngSanitize','ngStorage'])
 
         var isValidCharacterKeyCode = function(param){
             return (param > 47 && param < 58) || // number keys
-                param == 32 || // spacebar
+                //param == 32 || // spacebar
                 (param > 64 && param < 91) || // letter keys
                 (param > 95 && param < 112) || // numpad keys
                 (param > 185 && param < 193) || // ;=,-./` (in order)
                 (param > 218 && param < 223);   // [\]' (in order)
         };
 
-        var isCmdKeyPressed = function () {
+        var isCmdKeyDown = function () {
             if ( OSName == "MacOS" ) {
                 return map[91];
             }
             return false;
         }
 
+        var isSpaceKeyPressed = function (event) {
+            if ( event.keyCode == 32 ) {
+                return true;
+            }
+            return false;
+        }
+
         $scope.onKeyDown = function (event) {
+            //console.log("KEYDOWN " + event.keyCode);
             map[event.keyCode] = true;
             if (isModifierPressed(event)) {
                 var result = '';
-                console.log("000 " + result);
                 if ( OSName == "MacOS" )  {
                     if (event.ctrlKey)
                         result += '⌃ + ';
@@ -63,7 +70,7 @@ angular.module('ideShortcuts', ['ngSanitize','ngStorage'])
                         result += '⌥ + ';
                     if (event.shiftKey)
                         result += '⇧ + ';
-                    if (  isCmdKeyPressed() )
+                    if ( isCmdKeyDown() )
                         result += '⌘ + ';
                 } else {
                     if (event.ctrlKey )
@@ -73,10 +80,13 @@ angular.module('ideShortcuts', ['ngSanitize','ngStorage'])
                     if (event.altKey)
                         result += 'Alt + ';
                 }
+
+                if ( isSpaceKeyPressed(event) ) {
+                    result += "Space";
+                }
                 
                 event.preventDefault();
                 $scope.search = result;
-                console.log("300 " + result);
                 if(isValidCharacterKeyCode(event.keyCode))
                     $scope.search += String.fromCharCode(event.which);
                 else{
@@ -96,7 +106,12 @@ angular.module('ideShortcuts', ['ngSanitize','ngStorage'])
         };
 
         $scope.onKeyUp = function (event) {
+            //console.log("KEYUP " + event.keyCode);
             map[event.keyCode] = false;
+        }
+
+        $scope.onKeyPress = function (event) {
+            //console.log("KEYPRESS " + event.keyCode);
         }
 
         const shortcutsFile = 'shortcuts.json';
