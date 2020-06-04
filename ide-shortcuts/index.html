@@ -34,7 +34,7 @@
         <div class="input-group">
             <div class="input-group-addon"><i class="fa fa-search" ng-hide="search"></i><i class="fa fa-times ng-cloak" ng-show="search" ng-click="search=''"></i></div>
             <input name="searchField" autofocus type="text" class="form-control" placeholder="Text or Shortcut"
-                   ng-model="search" ng-keydown="onKeyDown($event)">
+                   ng-model="search" ng-keydown="onKeyDown($event)"  ng-keyup="onKeyUp($event)">
         </div>
     </div>
     <!--<button ng-click="reset()">reset</button>-->

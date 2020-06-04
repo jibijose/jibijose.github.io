@@ -137,7 +137,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": "⌘ + ⇧ + Enter"
+          "intellij": "⇧ + ⌘ + Enter"
         },
         "description": "Complete statement",
         "highlight": "highlight"
@@ -260,7 +260,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": "⌘ + ⌥ + /"
+          "intellij": "⌥ + ⌘ + /"
         },
         "description": "Comment/uncomment with block comment",
         "highlight": "highlight"
@@ -315,7 +315,7 @@
           "intellij": "Ctrl + Alt + L"
         },
         "mac": {
-          "eclipse": "⌘ + ⇧ + F",
+          "eclipse": "⇧ + ⌘ + F",
           "intellij": "⌥ + ⌘ + L"
         },
         "description": "Reformat code",
@@ -632,7 +632,7 @@
         },
         "mac": {
           "eclipse": "⇧ + ⌘ + K",
-          "intellij": "⌘ + ⇧ + G"
+          "intellij": "⇧ + ⌘ + G"
         },
         "description": "Find previous"
       },
@@ -654,7 +654,7 @@
         },
         "mac": {
           "eclipse": "⌃ + H",
-          "intellij": "⌘ + ⇧ + F"
+          "intellij": "⇧ + ⌘ + F"
         },
         "description": "Find in path",
         "highlight": "highlight"
@@ -666,7 +666,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": "⌘ + ⇧ + R"
+          "intellij": "⇧ + ⌘ + R"
         },
         "description": "Replace in path"
       }
@@ -693,7 +693,7 @@
           "intellij": "Ctrl + F7"
         },
         "mac": {
-          "eclipse": "⌘ + ⇧ + G",
+          "eclipse": "⇧ + ⌘ + G",
           "intellij": ""
         },
         "description": "Find usages in file",
@@ -801,7 +801,7 @@
           "intellij": "Shift + F9"
         },
         "mac": {
-          "eclipse": "⌥ + ⌃ + ⌘ + D",
+          "eclipse": "⌃ + ⌥ + ⌘ + D",
           "intellij": "⌃ + ⌥ + D"
         },
         "description": "Debug",
@@ -920,7 +920,7 @@
         },
         "mac": {
           "eclipse": "",
-          "intellij": "⌘ + ⇧ + F8"
+          "intellij": "⇧ + ⌘ + F8"
         },
         "description": "View breakpoints"
       }
@@ -935,7 +935,7 @@
           "intellij": "Ctrl + N"
         },
         "mac": {
-          "eclipse": "⌘ + ⇧ + T",
+          "eclipse": "⇧ + ⌘ + T",
           "intellij": ""
         },
         "description": "Go to class",
@@ -947,8 +947,8 @@
           "intellij": "Ctrl + Shift + N"
         },
         "mac": {
-          "eclipse": "⌘ + ⇧ + R",
-          "intellij": "⌘ + ⇧ + O"
+          "eclipse": "⇧ + ⌘ + R",
+          "intellij": "⇧ + ⌘ + O"
         },
         "description": "Go to file",
         "highlight": "highlight"
