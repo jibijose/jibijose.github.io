@@ -1224,7 +1224,7 @@
         },
         "mac": {
           "eclipse": "⌘ + O",
-          "intellij": ""
+          "intellij": "⌘ + F12"
         },
         "description": "File structure popup"
       },
