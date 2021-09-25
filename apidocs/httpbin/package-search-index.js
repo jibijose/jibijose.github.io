@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.jibi"},{"l":"com.jibi.common"},{"l":"com.jibi.config"},{"l":"com.jibi.controller"},{"l":"com.jibi.model"},{"l":"com.jibi.schedule"},{"l":"com.jibi.service"}]
