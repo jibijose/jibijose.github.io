@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DiskController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">httpbin</a> &gt; <a href="index.source.html" class="el_package">com.jibi.controller</a> &gt; <span class="el_source">DiskController.java</span></div><h1>DiskController.java</h1><pre class="source lang-java linenums">package com.jibi.controller;
+
+import com.jibi.common.Util;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.stream.IntStream;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+/** The type Disk controller. */
+@Tag(name = &quot;Disk Api&quot;, description = &quot;Disk Api&quot;)
+@RestController(value = &quot;Disk Api&quot;)
+@RequestMapping(&quot;/disk&quot;)
+<span class="fc" id="L29">@Slf4j</span>
+<span class="fc" id="L30">public class DiskController {</span>
+
+<span class="fc" id="L32">  private static byte[] BYTES1MB = null;</span>
+
+  static {
+<span class="fc" id="L35">    BYTES1MB = getFileContent(&quot;1MB&quot;);</span>
+<span class="fc" id="L36">  }</span>
+
+  /**
+   * Write.
+   *
+   * @param unit the unit
+   * @param count the count
+   * @throws IOException the io exception
+   */
+  @Operation(
+      summary = &quot;Disk write api&quot;,
+      description = &quot;Disk write api&quot;,
+      tags = {&quot;disk&quot;})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;Successful operation&quot;,
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;)
+      })
+  @Parameter(
+      name = &quot;unit&quot;,
+      description = &quot;Unit of write bytes&quot;,
+      schema =
+          @Schema(
+              description = &quot;Unit&quot;,
+              type = &quot;string&quot;,
+              allowableValues = {&quot;MB&quot;, &quot;GB&quot;}))
+  @Parameter(
+      name = &quot;count&quot;,
+      description = &quot;Count of write bytes&quot;,
+      schema = @Schema(description = &quot;Count&quot;, type = &quot;integer&quot;))
+  @RequestMapping(
+      value = &quot;/write/{unit}/{count}&quot;,
+      method = RequestMethod.GET,
+      produces = {MediaType.TEXT_PLAIN_VALUE})
+  public void write(@PathVariable(&quot;unit&quot;) String unit, @PathVariable(&quot;count&quot;) Integer count)
+      throws IOException {
+<span class="fc bfc" id="L76" title="All 4 branches covered.">    if (!&quot;GB&quot;.equals(unit) &amp;&amp; !&quot;MB&quot;.equals(unit)) {</span>
+<span class="fc" id="L77">      return;</span>
+      // throw new RuntimeException(&quot;Unit must be MB or GB&quot;);
+    }
+<span class="fc bfc" id="L80" title="All 2 branches covered.">    if (&quot;GB&quot;.equals(unit)) {</span>
+<span class="fc" id="L81">      count = count * 1024;</span>
+    }
+<span class="fc" id="L83">    byte[] bytes = BYTES1MB;</span>
+<span class="fc" id="L84">    IntStream.range(0, count)</span>
+<span class="fc" id="L85">        .forEach(</span>
+            index -&gt; {
+              try {
+<span class="fc" id="L88">                writeAndDeleteTempFile(bytes);</span>
+<span class="nc" id="L89">              } catch (IOException ioException) {</span>
+<span class="nc" id="L90">                log.error(&quot;Write failed&quot;, ioException);</span>
+                // throw new RuntimeException(&quot;Write failed&quot;, ioException);
+<span class="fc" id="L92">              }</span>
+<span class="fc" id="L93">            });</span>
+<span class="fc" id="L94">  }</span>
+
+  /**
+   * Read.
+   *
+   * @param unit the unit
+   * @param count the count
+   */
+  @Operation(
+      summary = &quot;Disk read api&quot;,
+      description = &quot;Disk read api&quot;,
+      tags = {&quot;disk&quot;})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;Successful operation&quot;,
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;)
+      })
+  @Parameter(
+      name = &quot;unit&quot;,
+      description = &quot;Unit of read bytes&quot;,
+      schema =
+          @Schema(
+              description = &quot;Unit&quot;,
+              type = &quot;string&quot;,
+              allowableValues = {&quot;MB&quot;, &quot;GB&quot;}))
+  @Parameter(
+      name = &quot;count&quot;,
+      description = &quot;Count of read bytes&quot;,
+      schema = @Schema(description = &quot;Count&quot;, type = &quot;integer&quot;))
+  @RequestMapping(
+      value = &quot;/read/{unit}/{count}&quot;,
+      method = RequestMethod.GET,
+      produces = {MediaType.TEXT_PLAIN_VALUE})
+  public void read(@PathVariable(&quot;unit&quot;) String unit, @PathVariable(&quot;count&quot;) Integer count) {
+<span class="fc bfc" id="L132" title="All 4 branches covered.">    if (!&quot;GB&quot;.equals(unit) &amp;&amp; !&quot;MB&quot;.equals(unit)) {</span>
+<span class="fc" id="L133">      return;</span>
+      // throw new RuntimeException(&quot;Unit must be MB or GB&quot;);
+    }
+<span class="fc bfc" id="L136" title="All 2 branches covered.">    if (&quot;GB&quot;.equals(unit)) {</span>
+<span class="fc" id="L137">      count = count * 1024;</span>
+    }
+
+<span class="fc" id="L140">    IntStream.range(0, count)</span>
+<span class="fc" id="L141">        .forEach(</span>
+            index -&gt; {
+<span class="fc" id="L143">              byte[] bytes = getFileContent(&quot;1MB&quot;);</span>
+<span class="fc" id="L144">            });</span>
+<span class="fc" id="L145">  }</span>
+
+  private static byte[] getFileContent(String size) {
+<span class="fc" id="L148">    byte[] fileData = null;</span>
+<span class="fc" id="L149">    try (InputStream in =</span>
+<span class="fc" id="L150">        DiskController.class.getResourceAsStream(&quot;/file/other/txt/&quot; + size + &quot;.txt&quot;)) {</span>
+<span class="fc" id="L151">      fileData = IOUtils.toByteArray(in);</span>
+<span class="nc" id="L152">    } catch (IOException ioException) {</span>
+<span class="nc" id="L153">      log.error(&quot;Read failed&quot;, ioException);</span>
+      // throw new RuntimeException(&quot;Read failed&quot;, ioException);
+<span class="fc" id="L155">    }</span>
+<span class="fc" id="L156">    return fileData;</span>
+  }
+
+  private void writeAndDeleteTempFile(byte[] bytes) throws IOException {
+<span class="fc" id="L160">    File file = null;</span>
+<span class="fc" id="L161">    try (InputStream inputStream = getClass().getResourceAsStream(&quot;/file/other/txt/1MB.txt&quot;)) {</span>
+<span class="fc" id="L162">      file = new File(&quot;temp&quot; + Util.randomNumber(0, Integer.MAX_VALUE) + &quot;.txt&quot;);</span>
+<span class="fc" id="L163">      FileUtils.writeByteArrayToFile(file, bytes);</span>
+    } finally {
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">      if (file != null) {</span>
+<span class="fc" id="L166">        boolean deleteStatus = file.delete();</span>
+<span class="fc" id="L167">        log.trace(&quot;File {} delete status is {}&quot;, file, deleteStatus);</span>
+      }
+    }
+<span class="fc" id="L170">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

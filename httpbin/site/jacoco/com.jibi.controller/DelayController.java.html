@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DelayController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">httpbin</a> &gt; <a href="index.source.html" class="el_package">com.jibi.controller</a> &gt; <span class="el_source">DelayController.java</span></div><h1>DelayController.java</h1><pre class="source lang-java linenums">package com.jibi.controller;
+
+import com.jibi.common.Util;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+/** The type Delay controller. */
+@Tag(name = &quot;Delay Api&quot;, description = &quot;Delay Api&quot;)
+@RestController(value = &quot;Delay Api&quot;)
+@RequestMapping(&quot;/delay&quot;)
+<span class="fc" id="L22">@Slf4j</span>
+<span class="fc" id="L23">public class DelayController {</span>
+
+  /**
+   * Delay constant.
+   *
+   * @param unit the unit
+   * @param time the time
+   */
+  @Operation(
+      summary = &quot;Delay constant api&quot;,
+      description = &quot;Delay constant api&quot;,
+      tags = {&quot;disk&quot;})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;Successful operation&quot;,
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;)
+      })
+  @Parameter(
+      name = &quot;unit&quot;,
+      schema =
+          @Schema(
+              description = &quot;Unit&quot;,
+              type = &quot;string&quot;,
+              allowableValues = {&quot;MB&quot;, &quot;GB&quot;}))
+  @Parameter(name = &quot;time&quot;, schema = @Schema(description = &quot;Time&quot;, type = &quot;integer&quot;))
+  @RequestMapping(value = &quot;/{unit}/{time}&quot;, method = RequestMethod.GET)
+  public void delayConstant(@PathVariable(&quot;unit&quot;) String unit, @PathVariable(&quot;time&quot;) Integer time) {
+<span class="nc bnc" id="L54" title="All 2 branches missed.">    if (&quot;millis&quot;.equals(unit)) {</span>
+<span class="nc" id="L55">      Util.sleepMillisSilent(time);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">    } else if (&quot;seconds&quot;.equals(unit)) {</span>
+<span class="nc" id="L57">      Util.sleepSecondsSilent(time);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">    } else if (&quot;minutes&quot;.equals(unit)) {</span>
+<span class="nc" id="L59">      Util.sleepMinutesSilent(time);</span>
+    } else {
+<span class="nc" id="L61">      String errorMessage = String.format(&quot;Unknown time unit %s&quot;, unit);</span>
+<span class="nc" id="L62">      log.warn(errorMessage);</span>
+      // throw new RuntimeException(errorMessage);
+    }
+<span class="nc" id="L65">  }</span>
+
+  /**
+   * Delay random.
+   *
+   * @param unit the unit
+   * @param time the time
+   */
+  @Operation(
+      summary = &quot;Delay random api&quot;,
+      description = &quot;Delay random api&quot;,
+      tags = {&quot;disk&quot;})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;Successful operation&quot;,
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;)
+      })
+  @Parameter(
+      name = &quot;unit&quot;,
+      schema =
+          @Schema(
+              description = &quot;Unit of time&quot;,
+              type = &quot;string&quot;,
+              allowableValues = {&quot;millis&quot;, &quot;seconds&quot;, &quot;minutes&quot;}))
+  @Parameter(name = &quot;time&quot;, schema = @Schema(description = &quot;Time&quot;, type = &quot;integer&quot;))
+  @RequestMapping(value = &quot;/random/{unit}/{time}&quot;, method = RequestMethod.GET)
+  public void delayRandom(@PathVariable String unit, @PathVariable Integer time) {
+<span class="nc" id="L96">    delayRandomRange(unit, 0, time);</span>
+<span class="nc" id="L97">  }</span>
+
+  /**
+   * Delay random range.
+   *
+   * @param unit the unit
+   * @param minTime the min time
+   * @param maxTime the max time
+   */
+  @Operation(
+      summary = &quot;Delay random range api&quot;,
+      description = &quot;Delay random range api&quot;,
+      tags = {&quot;disk&quot;})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;Successful operation&quot;,
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;)
+      })
+  @Parameter(
+      name = &quot;unit&quot;,
+      schema =
+          @Schema(
+              description = &quot;Unit of time&quot;,
+              type = &quot;string&quot;,
+              allowableValues = {&quot;millis&quot;, &quot;seconds&quot;, &quot;minutes&quot;}))
+  @Parameter(name = &quot;minTime&quot;, schema = @Schema(description = &quot;Minimum time&quot;, type = &quot;integer&quot;))
+  @Parameter(name = &quot;maxTime&quot;, schema = @Schema(description = &quot;Maximum time&quot;, type = &quot;integer&quot;))
+  @RequestMapping(value = &quot;/random/{unit}/range/{minTime}/{maxTime}&quot;, method = RequestMethod.GET)
+  public void delayRandomRange(
+      @PathVariable String unit, @PathVariable Integer minTime, @PathVariable Integer maxTime) {
+<span class="nc" id="L131">    int time = Util.randomNumber(minTime, maxTime);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">    if (&quot;millis&quot;.equals(unit)) {</span>
+<span class="nc" id="L133">      Util.sleepMillisSilent(time);</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">    } else if (&quot;seconds&quot;.equals(unit)) {</span>
+<span class="nc" id="L135">      Util.sleepSecondsSilent(time);</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">    } else if (&quot;minutes&quot;.equals(unit)) {</span>
+<span class="nc" id="L137">      Util.sleepMinutesSilent(time);</span>
+    } else {
+<span class="nc" id="L139">      String errorMessage = String.format(&quot;Unknown time unit %s&quot;, unit);</span>
+<span class="nc" id="L140">      log.warn(errorMessage);</span>
+      // throw new RuntimeException(errorMessage);
+    }
+<span class="nc" id="L143">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

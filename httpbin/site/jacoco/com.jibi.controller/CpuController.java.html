@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CpuController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">httpbin</a> &gt; <a href="index.source.html" class="el_package">com.jibi.controller</a> &gt; <span class="el_source">CpuController.java</span></div><h1>CpuController.java</h1><pre class="source lang-java linenums">package com.jibi.controller;
+
+import com.jibi.service.BusyService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+/** The type Cpu controller. */
+@Tag(name = &quot;Cpu Api&quot;, description = &quot;Cpu Api&quot;)
+@RestController(value = &quot;Cpu Api&quot;)
+@RequestMapping(&quot;/cpu&quot;)
+<span class="fc" id="L21">public class CpuController {</span>
+
+  @Autowired private BusyService busyService;
+
+  /**
+   * Cpu all processors.
+   *
+   * @param percentage the percentage
+   * @param time the time
+   */
+  @Operation(
+      summary = &quot;Cpu all processors operation&quot;,
+      description = &quot;Cpu all processors operation&quot;,
+      tags = {&quot;disk&quot;})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;Successful operation&quot;,
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = String.class)))),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;)
+      })
+  @RequestMapping(value = &quot;/all/{percentage}/{time}&quot;, method = RequestMethod.GET)
+  public void cpuAllProcessors(
+      @PathVariable(&quot;percentage&quot;) Integer percentage, @PathVariable(&quot;time&quot;) Integer time) {
+<span class="fc" id="L47">    busyService.runInAllProcessors(percentage, time);</span>
+<span class="fc" id="L48">  }</span>
+
+  /**
+   * Cpu single processor.
+   *
+   * @param percentage the percentage
+   * @param time the time
+   */
+  @Operation(
+      summary = &quot;Cpu single processors operation&quot;,
+      description = &quot;Cpu single processors operation&quot;,
+      tags = {&quot;disk&quot;})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;Successful operation&quot;,
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = String.class)))),
+        @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal server error&quot;)
+      })
+  @RequestMapping(value = &quot;/single/{percentage}/{time}&quot;, method = RequestMethod.GET)
+  public void cpuSingleProcessor(
+      @PathVariable(&quot;percentage&quot;) Integer percentage, @PathVariable(&quot;time&quot;) Integer time) {
+<span class="fc" id="L72">    busyService.runInSingleProcessor(percentage, time);</span>
+<span class="fc" id="L73">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

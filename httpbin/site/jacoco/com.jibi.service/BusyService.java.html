@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BusyService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">httpbin</a> &gt; <a href="index.source.html" class="el_package">com.jibi.service</a> &gt; <span class="el_source">BusyService.java</span></div><h1>BusyService.java</h1><pre class="source lang-java linenums">package com.jibi.service;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+/** The type Busy service. */
+@Service
+<span class="fc" id="L11">@Slf4j</span>
+<span class="fc" id="L12">public class BusyService {</span>
+
+<span class="fc" id="L14">  private static int SLOTS = 1000;</span>
+<span class="fc" id="L15">  private static int CORES = Runtime.getRuntime().availableProcessors();</span>
+
+  /**
+   * Run in all processors.
+   *
+   * @param percentage the percentage
+   * @param seconds the seconds
+   */
+  public void runInAllProcessors(int percentage, int seconds) {
+<span class="fc" id="L24">    ExecutorService executor = Executors.newFixedThreadPool(CORES);</span>
+<span class="fc" id="L25">    log.debug(&quot;Running {} percentage for {} seconds in {} processors&quot;, percentage, seconds, CORES);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">    for (int iCount = 0; iCount &lt; CORES; iCount++) {</span>
+<span class="fc" id="L27">      executor.execute(new BusyProcessor(percentage, seconds));</span>
+    }
+<span class="fc" id="L29">    executor.shutdown();</span>
+    try {
+<span class="fc" id="L31">      executor.awaitTermination(seconds, TimeUnit.SECONDS);</span>
+<span class="fc" id="L32">    } catch (InterruptedException interruptedException) {</span>
+<span class="fc" id="L33">      log.warn(&quot;Processor threads not stopped&quot;, interruptedException);</span>
+<span class="fc" id="L34">    }</span>
+<span class="fc" id="L35">  }</span>
+
+  /**
+   * Run in single processor.
+   *
+   * @param percentage the percentage
+   * @param seconds the seconds
+   */
+  public void runInSingleProcessor(int percentage, int seconds) {
+<span class="fc" id="L44">    new BusyProcessor(percentage, seconds).run();</span>
+<span class="fc" id="L45">  }</span>
+
+  /** The type Busy Processor. */
+  private static class BusyProcessor implements Runnable {
+    private int percentage;
+    private int seconds;
+
+    /**
+     * Instantiates a new Busy processor.
+     *
+     * @param percentage the percentage
+     * @param seconds the seconds
+     */
+<span class="fc" id="L58">    public BusyProcessor(int percentage, int seconds) {</span>
+<span class="fc" id="L59">      this.percentage = percentage;</span>
+<span class="fc" id="L60">      this.seconds = seconds;</span>
+<span class="fc" id="L61">    }</span>
+
+    /** Run processor. */
+    @Override
+    public void run() {
+<span class="fc" id="L66">      long runSlotMillis = percentage * seconds * 1000 / SLOTS / 100;</span>
+<span class="fc" id="L67">      long idleSlotMillis = (100 - percentage) * seconds * 1000 / SLOTS / 100;</span>
+
+<span class="fc bfc" id="L69" title="All 2 branches covered.">      for (int iCount = 0; iCount &lt; SLOTS; iCount++) {</span>
+<span class="fc" id="L70">        long startTime = System.currentTimeMillis();</span>
+        try {
+<span class="fc" id="L72">          long diffTime = System.currentTimeMillis() - startTime;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">          while (diffTime &lt; runSlotMillis) {</span>
+<span class="nc" id="L74">            diffTime = System.currentTimeMillis() - startTime;</span>
+          }
+<span class="fc" id="L76">          Thread.sleep(idleSlotMillis);</span>
+<span class="fc" id="L77">        } catch (InterruptedException interruptedException) {</span>
+<span class="fc" id="L78">          log.warn(&quot;Thread is interrupted&quot;, interruptedException);</span>
+<span class="fc" id="L79">        }</span>
+      }
+<span class="fc" id="L81">    }</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
