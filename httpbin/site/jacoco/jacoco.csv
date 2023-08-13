@@ -7,7 +7,7 @@ httpbin,com.jibi.service,BusyService,0,71,0,2,0,16,0,5,0,4
 httpbin,com.jibi.controller,FileController,0,1076,0,4,0,122,0,39,0,37
 httpbin,com.jibi.controller,UploadDownloadController,0,54,1,1,0,13,1,4,0,4
 httpbin,com.jibi.controller,StatusCodesController,0,62,0,0,0,10,0,4,0,4
-httpbin,com.jibi.controller,DelayController,84,7,12,0,21,2,9,2,3,2
+httpbin,com.jibi.controller,DelayController,0,91,0,12,0,23,0,11,0,5
 httpbin,com.jibi.controller,SystemInfoController,0,233,0,2,0,58,0,8,0,7
 httpbin,com.jibi.controller,DiskController,10,120,1,13,4,39,1,14,0,8
 httpbin,com.jibi.controller,CpuController,0,19,0,0,0,5,0,3,0,3
@@ -23,4 +23,4 @@ httpbin,com.jibi.model,SystemInfoModel,0,51,0,0,0,17,0,9,0,9
 httpbin,com.jibi.model,SystemInfoModel.DiskInfoModel,37,45,0,0,2,8,2,13,2,13
 httpbin,com.jibi.schedule,Schedulers,0,15,0,0,0,6,0,3,0,3
 httpbin,com.jibi.common,StringUtil,0,39,0,2,0,8,0,3,0,2
-httpbin,com.jibi.common,Util,76,50,7,3,26,13,10,5,6,4
+httpbin,com.jibi.common,Util,0,120,0,10,0,36,0,15,0,10
