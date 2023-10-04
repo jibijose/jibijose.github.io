@@ -27,130 +27,131 @@ import org.springframework.web.bind.annotation.RestController;
 <span class="fc" id="L27">public class FileController {</span>
   /** The Filegrouptypes. */
 <span class="fc" id="L29">  static final Map&lt;String, List&lt;String&gt;&gt; FILEGROUPTYPES = new HashMap&lt;&gt;();</span>
+
   /** The Filetypesizes. */
-<span class="fc" id="L31">  static final Map&lt;String, List&lt;String&gt;&gt; FILETYPESIZES = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L32">  static final Map&lt;String, List&lt;String&gt;&gt; FILETYPESIZES = new HashMap&lt;&gt;();</span>
 
-<span class="fc" id="L33">  private static List&lt;String&gt; IMAGETYPES = Arrays.asList(&quot;jpg&quot;, &quot;gif&quot;, &quot;png&quot;, &quot;tiff&quot;, &quot;ico&quot;);</span>
-<span class="fc" id="L34">  private static List&lt;String&gt; VIDEOTYPES = Arrays.asList(&quot;avi&quot;, &quot;mov&quot;, &quot;mp4&quot;, &quot;ogg&quot;, &quot;wmv&quot;);</span>
-<span class="fc" id="L35">  private static List&lt;String&gt; AUDIOYPES = Arrays.asList(&quot;mp3&quot;, &quot;wav&quot;, &quot;ogg&quot;);</span>
-<span class="fc" id="L36">  private static List&lt;String&gt; DOCUMENTYPES =</span>
-<span class="fc" id="L37">      Arrays.asList(&quot;doc&quot;, &quot;docx&quot;, &quot;xls&quot;, &quot;xlsx&quot;, &quot;ppt&quot;, &quot;pdf&quot;, &quot;odp&quot;, &quot;ods&quot;, &quot;odt&quot;, &quot;rtf&quot;);</span>
-<span class="fc" id="L38">  private static List&lt;String&gt; OTHERTYPES = Arrays.asList(&quot;csv&quot;, &quot;html&quot;, &quot;txt&quot;, &quot;zip&quot;);</span>
+<span class="fc" id="L34">  private static List&lt;String&gt; IMAGETYPES = Arrays.asList(&quot;jpg&quot;, &quot;gif&quot;, &quot;png&quot;, &quot;tiff&quot;, &quot;ico&quot;);</span>
+<span class="fc" id="L35">  private static List&lt;String&gt; VIDEOTYPES = Arrays.asList(&quot;avi&quot;, &quot;mov&quot;, &quot;mp4&quot;, &quot;ogg&quot;, &quot;wmv&quot;);</span>
+<span class="fc" id="L36">  private static List&lt;String&gt; AUDIOYPES = Arrays.asList(&quot;mp3&quot;, &quot;wav&quot;, &quot;ogg&quot;);</span>
+<span class="fc" id="L37">  private static List&lt;String&gt; DOCUMENTYPES =</span>
+<span class="fc" id="L38">      Arrays.asList(&quot;doc&quot;, &quot;docx&quot;, &quot;xls&quot;, &quot;xlsx&quot;, &quot;ppt&quot;, &quot;pdf&quot;, &quot;odp&quot;, &quot;ods&quot;, &quot;odt&quot;, &quot;rtf&quot;);</span>
+<span class="fc" id="L39">  private static List&lt;String&gt; OTHERTYPES = Arrays.asList(&quot;csv&quot;, &quot;html&quot;, &quot;txt&quot;, &quot;zip&quot;);</span>
 
-<span class="fc" id="L40">  private static List&lt;String&gt; IMAGEJPGSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;, &quot;2.5MB&quot;);</span>
-<span class="fc" id="L41">  private static List&lt;String&gt; IMAGEGIFSIZES = Arrays.asList(&quot;500KB&quot;, &quot;1MB&quot;, &quot;3.5MB&quot;);</span>
-<span class="fc" id="L42">  private static List&lt;String&gt; IMAGEPNGSIZES = Arrays.asList(&quot;500KB&quot;, &quot;1MB&quot;, &quot;2MB&quot;, &quot;3MB&quot;);</span>
-<span class="fc" id="L43">  private static List&lt;String&gt; IMAGETIFFSIZES = Arrays.asList(&quot;1MB&quot;, &quot;5MB&quot;, &quot;10MB&quot;);</span>
-<span class="fc" id="L44">  private static List&lt;String&gt; IMAGEICOSIZES = Arrays.asList(&quot;400B&quot;);</span>
+<span class="fc" id="L41">  private static List&lt;String&gt; IMAGEJPGSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;, &quot;2.5MB&quot;);</span>
+<span class="fc" id="L42">  private static List&lt;String&gt; IMAGEGIFSIZES = Arrays.asList(&quot;500KB&quot;, &quot;1MB&quot;, &quot;3.5MB&quot;);</span>
+<span class="fc" id="L43">  private static List&lt;String&gt; IMAGEPNGSIZES = Arrays.asList(&quot;500KB&quot;, &quot;1MB&quot;, &quot;2MB&quot;, &quot;3MB&quot;);</span>
+<span class="fc" id="L44">  private static List&lt;String&gt; IMAGETIFFSIZES = Arrays.asList(&quot;1MB&quot;, &quot;5MB&quot;, &quot;10MB&quot;);</span>
+<span class="fc" id="L45">  private static List&lt;String&gt; IMAGEICOSIZES = Arrays.asList(&quot;400B&quot;);</span>
 
-<span class="fc" id="L46">  private static List&lt;String&gt; VIDEOAVISIZES = Arrays.asList(&quot;750KB&quot;, &quot;800KB&quot;, &quot;1.5MB&quot;, &quot;2.3MB&quot;);</span>
-<span class="fc" id="L47">  private static List&lt;String&gt; VIDEOMOVSIZES = Arrays.asList(&quot;700KB&quot;, &quot;800KB&quot;, &quot;1.4MB&quot;, &quot;2.2MB&quot;);</span>
-<span class="fc" id="L48">  private static List&lt;String&gt; VIDEOMP4SIZES = Arrays.asList(&quot;1.5MB&quot;, &quot;3MB&quot;, &quot;10MB&quot;, &quot;18MB&quot;);</span>
-<span class="fc" id="L49">  private static List&lt;String&gt; VIDEOOGGSIZES = Arrays.asList(&quot;1.7MB&quot;, &quot;2.7MB&quot;, &quot;11.4MB&quot;, &quot;13.3MB&quot;);</span>
-<span class="fc" id="L50">  private static List&lt;String&gt; VIDEOWMVSIZES = Arrays.asList(&quot;1.2MB&quot;, &quot;1.6MB&quot;, &quot;4.9MB&quot;, &quot;9.3MB&quot;);</span>
+<span class="fc" id="L47">  private static List&lt;String&gt; VIDEOAVISIZES = Arrays.asList(&quot;750KB&quot;, &quot;800KB&quot;, &quot;1.5MB&quot;, &quot;2.3MB&quot;);</span>
+<span class="fc" id="L48">  private static List&lt;String&gt; VIDEOMOVSIZES = Arrays.asList(&quot;700KB&quot;, &quot;800KB&quot;, &quot;1.4MB&quot;, &quot;2.2MB&quot;);</span>
+<span class="fc" id="L49">  private static List&lt;String&gt; VIDEOMP4SIZES = Arrays.asList(&quot;1.5MB&quot;, &quot;3MB&quot;, &quot;10MB&quot;, &quot;18MB&quot;);</span>
+<span class="fc" id="L50">  private static List&lt;String&gt; VIDEOOGGSIZES = Arrays.asList(&quot;1.7MB&quot;, &quot;2.7MB&quot;, &quot;11.4MB&quot;, &quot;13.3MB&quot;);</span>
+<span class="fc" id="L51">  private static List&lt;String&gt; VIDEOWMVSIZES = Arrays.asList(&quot;1.2MB&quot;, &quot;1.6MB&quot;, &quot;4.9MB&quot;, &quot;9.3MB&quot;);</span>
 
-<span class="fc" id="L52">  private static List&lt;String&gt; AUDIOMP3SIZES = Arrays.asList(&quot;700KB&quot;, &quot;1MB&quot;, &quot;2MB&quot;, &quot;5MB&quot;);</span>
-<span class="fc" id="L53">  private static List&lt;String&gt; AUDIOWAVSIZES = Arrays.asList(&quot;1MB&quot;, &quot;2MB&quot;, &quot;5MB&quot;, &quot;10MB&quot;);</span>
-<span class="fc" id="L54">  private static List&lt;String&gt; AUDIOOGGSIZES = Arrays.asList(&quot;1MB&quot;, &quot;2MB&quot;, &quot;5MB&quot;);</span>
+<span class="fc" id="L53">  private static List&lt;String&gt; AUDIOMP3SIZES = Arrays.asList(&quot;700KB&quot;, &quot;1MB&quot;, &quot;2MB&quot;, &quot;5MB&quot;);</span>
+<span class="fc" id="L54">  private static List&lt;String&gt; AUDIOWAVSIZES = Arrays.asList(&quot;1MB&quot;, &quot;2MB&quot;, &quot;5MB&quot;, &quot;10MB&quot;);</span>
+<span class="fc" id="L55">  private static List&lt;String&gt; AUDIOOGGSIZES = Arrays.asList(&quot;1MB&quot;, &quot;2MB&quot;, &quot;5MB&quot;);</span>
 
-<span class="fc" id="L56">  private static List&lt;String&gt; DOCUMENTDOCSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
-<span class="fc" id="L57">  private static List&lt;String&gt; DOCUMENTDOCXSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
-<span class="fc" id="L58">  private static List&lt;String&gt; DOCUMENTXLSSIZES =</span>
-<span class="fc" id="L59">      Arrays.asList(&quot;10KB&quot;, &quot;14KB&quot;, &quot;20KB&quot;, &quot;140KB&quot;, &quot;670KB&quot;);</span>
-<span class="fc" id="L60">  private static List&lt;String&gt; DOCUMENTXLSXSIZES =</span>
-<span class="fc" id="L61">      Arrays.asList(&quot;5KB&quot;, &quot;7KB&quot;, &quot;9KB&quot;, &quot;42KB&quot;, &quot;184KB&quot;);</span>
-<span class="fc" id="L62">  private static List&lt;String&gt; DOCUMENTPPTSIZES = Arrays.asList(&quot;250KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
-<span class="fc" id="L63">  private static List&lt;String&gt; DOCUMENTPDFSIZES = Arrays.asList(&quot;150KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
-<span class="fc" id="L64">  private static List&lt;String&gt; DOCUMENTODPSIZES = Arrays.asList(&quot;200KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
-<span class="fc" id="L65">  private static List&lt;String&gt; DOCUMENTODSSIZES = Arrays.asList(&quot;31KB&quot;, &quot;67KB&quot;, &quot;94KB&quot;, &quot;231KB&quot;);</span>
-<span class="fc" id="L66">  private static List&lt;String&gt; DOCUMENTODTSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
-<span class="fc" id="L67">  private static List&lt;String&gt; DOCUMENTRTFSIZES = Arrays.asList(&quot;100KB&quot;, &quot;300KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
+<span class="fc" id="L57">  private static List&lt;String&gt; DOCUMENTDOCSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
+<span class="fc" id="L58">  private static List&lt;String&gt; DOCUMENTDOCXSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
+<span class="fc" id="L59">  private static List&lt;String&gt; DOCUMENTXLSSIZES =</span>
+<span class="fc" id="L60">      Arrays.asList(&quot;10KB&quot;, &quot;14KB&quot;, &quot;20KB&quot;, &quot;140KB&quot;, &quot;670KB&quot;);</span>
+<span class="fc" id="L61">  private static List&lt;String&gt; DOCUMENTXLSXSIZES =</span>
+<span class="fc" id="L62">      Arrays.asList(&quot;5KB&quot;, &quot;7KB&quot;, &quot;9KB&quot;, &quot;42KB&quot;, &quot;184KB&quot;);</span>
+<span class="fc" id="L63">  private static List&lt;String&gt; DOCUMENTPPTSIZES = Arrays.asList(&quot;250KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
+<span class="fc" id="L64">  private static List&lt;String&gt; DOCUMENTPDFSIZES = Arrays.asList(&quot;150KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
+<span class="fc" id="L65">  private static List&lt;String&gt; DOCUMENTODPSIZES = Arrays.asList(&quot;200KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
+<span class="fc" id="L66">  private static List&lt;String&gt; DOCUMENTODSSIZES = Arrays.asList(&quot;31KB&quot;, &quot;67KB&quot;, &quot;94KB&quot;, &quot;231KB&quot;);</span>
+<span class="fc" id="L67">  private static List&lt;String&gt; DOCUMENTODTSIZES = Arrays.asList(&quot;100KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
+<span class="fc" id="L68">  private static List&lt;String&gt; DOCUMENTRTFSIZES = Arrays.asList(&quot;100KB&quot;, &quot;300KB&quot;, &quot;500KB&quot;, &quot;1MB&quot;);</span>
 
-<span class="fc" id="L69">  private static List&lt;String&gt; OTHERCSVSIZES = Arrays.asList(&quot;7KB&quot;);</span>
-<span class="fc" id="L70">  private static List&lt;String&gt; OTHERHTMLSIZES = Arrays.asList(&quot;4KB&quot;);</span>
-<span class="fc" id="L71">  private static List&lt;String&gt; OTHERTXTSIZES =</span>
-<span class="fc" id="L72">      Arrays.asList(&quot;1B&quot;, &quot;10B&quot;, &quot;100B&quot;, &quot;1KB&quot;, &quot;10KB&quot;, &quot;100KB&quot;, &quot;1MB&quot;, &quot;10MB&quot;);</span>
-<span class="fc" id="L73">  private static List&lt;String&gt; OTHERZIPSIZES = Arrays.asList(&quot;2MB&quot;, &quot;5MB&quot;, &quot;9MB&quot;, &quot;10MB&quot;);</span>
+<span class="fc" id="L70">  private static List&lt;String&gt; OTHERCSVSIZES = Arrays.asList(&quot;7KB&quot;);</span>
+<span class="fc" id="L71">  private static List&lt;String&gt; OTHERHTMLSIZES = Arrays.asList(&quot;4KB&quot;);</span>
+<span class="fc" id="L72">  private static List&lt;String&gt; OTHERTXTSIZES =</span>
+<span class="fc" id="L73">      Arrays.asList(&quot;1B&quot;, &quot;10B&quot;, &quot;100B&quot;, &quot;1KB&quot;, &quot;10KB&quot;, &quot;100KB&quot;, &quot;1MB&quot;, &quot;10MB&quot;);</span>
+<span class="fc" id="L74">  private static List&lt;String&gt; OTHERZIPSIZES = Arrays.asList(&quot;2MB&quot;, &quot;5MB&quot;, &quot;9MB&quot;, &quot;10MB&quot;);</span>
 
   static {
-<span class="fc" id="L76">    FILEGROUPTYPES.put(&quot;image&quot;, IMAGETYPES);</span>
-<span class="fc" id="L77">    FILEGROUPTYPES.put(&quot;video&quot;, VIDEOTYPES);</span>
-<span class="fc" id="L78">    FILEGROUPTYPES.put(&quot;audio&quot;, AUDIOYPES);</span>
-<span class="fc" id="L79">    FILEGROUPTYPES.put(&quot;document&quot;, DOCUMENTYPES);</span>
-<span class="fc" id="L80">    FILEGROUPTYPES.put(&quot;other&quot;, OTHERTYPES);</span>
+<span class="fc" id="L77">    FILEGROUPTYPES.put(&quot;image&quot;, IMAGETYPES);</span>
+<span class="fc" id="L78">    FILEGROUPTYPES.put(&quot;video&quot;, VIDEOTYPES);</span>
+<span class="fc" id="L79">    FILEGROUPTYPES.put(&quot;audio&quot;, AUDIOYPES);</span>
+<span class="fc" id="L80">    FILEGROUPTYPES.put(&quot;document&quot;, DOCUMENTYPES);</span>
+<span class="fc" id="L81">    FILEGROUPTYPES.put(&quot;other&quot;, OTHERTYPES);</span>
 
-<span class="fc" id="L82">    FILETYPESIZES.put(&quot;image_jpg&quot;, IMAGEJPGSIZES);</span>
-<span class="fc" id="L83">    FILETYPESIZES.put(&quot;image_gif&quot;, IMAGEGIFSIZES);</span>
-<span class="fc" id="L84">    FILETYPESIZES.put(&quot;image_png&quot;, IMAGEPNGSIZES);</span>
-<span class="fc" id="L85">    FILETYPESIZES.put(&quot;image_tiff&quot;, IMAGETIFFSIZES);</span>
-<span class="fc" id="L86">    FILETYPESIZES.put(&quot;image_ico&quot;, IMAGEICOSIZES);</span>
+<span class="fc" id="L83">    FILETYPESIZES.put(&quot;image_jpg&quot;, IMAGEJPGSIZES);</span>
+<span class="fc" id="L84">    FILETYPESIZES.put(&quot;image_gif&quot;, IMAGEGIFSIZES);</span>
+<span class="fc" id="L85">    FILETYPESIZES.put(&quot;image_png&quot;, IMAGEPNGSIZES);</span>
+<span class="fc" id="L86">    FILETYPESIZES.put(&quot;image_tiff&quot;, IMAGETIFFSIZES);</span>
+<span class="fc" id="L87">    FILETYPESIZES.put(&quot;image_ico&quot;, IMAGEICOSIZES);</span>
 
-<span class="fc" id="L88">    FILETYPESIZES.put(&quot;video_avi&quot;, VIDEOAVISIZES);</span>
-<span class="fc" id="L89">    FILETYPESIZES.put(&quot;video_mov&quot;, VIDEOMOVSIZES);</span>
-<span class="fc" id="L90">    FILETYPESIZES.put(&quot;video_mp4&quot;, VIDEOMP4SIZES);</span>
-<span class="fc" id="L91">    FILETYPESIZES.put(&quot;video_ogg&quot;, VIDEOOGGSIZES);</span>
-<span class="fc" id="L92">    FILETYPESIZES.put(&quot;video_wmv&quot;, VIDEOWMVSIZES);</span>
+<span class="fc" id="L89">    FILETYPESIZES.put(&quot;video_avi&quot;, VIDEOAVISIZES);</span>
+<span class="fc" id="L90">    FILETYPESIZES.put(&quot;video_mov&quot;, VIDEOMOVSIZES);</span>
+<span class="fc" id="L91">    FILETYPESIZES.put(&quot;video_mp4&quot;, VIDEOMP4SIZES);</span>
+<span class="fc" id="L92">    FILETYPESIZES.put(&quot;video_ogg&quot;, VIDEOOGGSIZES);</span>
+<span class="fc" id="L93">    FILETYPESIZES.put(&quot;video_wmv&quot;, VIDEOWMVSIZES);</span>
 
-<span class="fc" id="L94">    FILETYPESIZES.put(&quot;audio_mp3&quot;, AUDIOMP3SIZES);</span>
-<span class="fc" id="L95">    FILETYPESIZES.put(&quot;audio_wav&quot;, AUDIOWAVSIZES);</span>
-<span class="fc" id="L96">    FILETYPESIZES.put(&quot;audio_ogg&quot;, AUDIOOGGSIZES);</span>
+<span class="fc" id="L95">    FILETYPESIZES.put(&quot;audio_mp3&quot;, AUDIOMP3SIZES);</span>
+<span class="fc" id="L96">    FILETYPESIZES.put(&quot;audio_wav&quot;, AUDIOWAVSIZES);</span>
+<span class="fc" id="L97">    FILETYPESIZES.put(&quot;audio_ogg&quot;, AUDIOOGGSIZES);</span>
 
-<span class="fc" id="L98">    FILETYPESIZES.put(&quot;document_doc&quot;, DOCUMENTDOCSIZES);</span>
-<span class="fc" id="L99">    FILETYPESIZES.put(&quot;document_docx&quot;, DOCUMENTDOCXSIZES);</span>
-<span class="fc" id="L100">    FILETYPESIZES.put(&quot;document_xls&quot;, DOCUMENTXLSSIZES);</span>
-<span class="fc" id="L101">    FILETYPESIZES.put(&quot;document_xlsx&quot;, DOCUMENTXLSXSIZES);</span>
-<span class="fc" id="L102">    FILETYPESIZES.put(&quot;document_ppt&quot;, DOCUMENTPPTSIZES);</span>
-<span class="fc" id="L103">    FILETYPESIZES.put(&quot;document_pdf&quot;, DOCUMENTPDFSIZES);</span>
-<span class="fc" id="L104">    FILETYPESIZES.put(&quot;document_odp&quot;, DOCUMENTODPSIZES);</span>
-<span class="fc" id="L105">    FILETYPESIZES.put(&quot;document_ods&quot;, DOCUMENTODSSIZES);</span>
-<span class="fc" id="L106">    FILETYPESIZES.put(&quot;document_odt&quot;, DOCUMENTODTSIZES);</span>
-<span class="fc" id="L107">    FILETYPESIZES.put(&quot;document_rtf&quot;, DOCUMENTRTFSIZES);</span>
+<span class="fc" id="L99">    FILETYPESIZES.put(&quot;document_doc&quot;, DOCUMENTDOCSIZES);</span>
+<span class="fc" id="L100">    FILETYPESIZES.put(&quot;document_docx&quot;, DOCUMENTDOCXSIZES);</span>
+<span class="fc" id="L101">    FILETYPESIZES.put(&quot;document_xls&quot;, DOCUMENTXLSSIZES);</span>
+<span class="fc" id="L102">    FILETYPESIZES.put(&quot;document_xlsx&quot;, DOCUMENTXLSXSIZES);</span>
+<span class="fc" id="L103">    FILETYPESIZES.put(&quot;document_ppt&quot;, DOCUMENTPPTSIZES);</span>
+<span class="fc" id="L104">    FILETYPESIZES.put(&quot;document_pdf&quot;, DOCUMENTPDFSIZES);</span>
+<span class="fc" id="L105">    FILETYPESIZES.put(&quot;document_odp&quot;, DOCUMENTODPSIZES);</span>
+<span class="fc" id="L106">    FILETYPESIZES.put(&quot;document_ods&quot;, DOCUMENTODSSIZES);</span>
+<span class="fc" id="L107">    FILETYPESIZES.put(&quot;document_odt&quot;, DOCUMENTODTSIZES);</span>
+<span class="fc" id="L108">    FILETYPESIZES.put(&quot;document_rtf&quot;, DOCUMENTRTFSIZES);</span>
 
-<span class="fc" id="L109">    FILETYPESIZES.put(&quot;other_csv&quot;, OTHERCSVSIZES);</span>
-<span class="fc" id="L110">    FILETYPESIZES.put(&quot;other_html&quot;, OTHERHTMLSIZES);</span>
-<span class="fc" id="L111">    FILETYPESIZES.put(&quot;other_txt&quot;, OTHERTXTSIZES);</span>
-<span class="fc" id="L112">    FILETYPESIZES.put(&quot;other_zip&quot;, OTHERZIPSIZES);</span>
-<span class="fc" id="L113">  }</span>
+<span class="fc" id="L110">    FILETYPESIZES.put(&quot;other_csv&quot;, OTHERCSVSIZES);</span>
+<span class="fc" id="L111">    FILETYPESIZES.put(&quot;other_html&quot;, OTHERHTMLSIZES);</span>
+<span class="fc" id="L112">    FILETYPESIZES.put(&quot;other_txt&quot;, OTHERTXTSIZES);</span>
+<span class="fc" id="L113">    FILETYPESIZES.put(&quot;other_zip&quot;, OTHERZIPSIZES);</span>
+<span class="fc" id="L114">  }</span>
 
   /**
    * *********************************************************************************************************************************************
    */
   private byte[] getFileContentInternal(String fileGroup, String fileType, String size)
       throws IOException {
-<span class="fc" id="L120">    try (InputStream in =</span>
-<span class="fc" id="L121">        getClass()</span>
-<span class="fc" id="L122">            .getResourceAsStream(</span>
+<span class="fc" id="L121">    try (InputStream in =</span>
+<span class="fc" id="L122">        getClass()</span>
+<span class="fc" id="L123">            .getResourceAsStream(</span>
                 &quot;/file/&quot; + fileGroup + &quot;/&quot; + fileType + &quot;/&quot; + size + &quot;.&quot; + fileType)) {
-<span class="fc" id="L124">      byte[] fileData = IOUtils.toByteArray(in);</span>
-<span class="fc" id="L125">      return fileData;</span>
+<span class="fc" id="L125">      byte[] fileData = IOUtils.toByteArray(in);</span>
+<span class="fc" id="L126">      return fileData;</span>
     }
   }
 
   private byte[] getFileContent(String fileGroup, String fileType) throws IOException {
 
-<span class="fc bfc" id="L131" title="All 2 branches covered.">    if (&quot;random&quot;.equals(fileType)) {</span>
-<span class="fc" id="L132">      int randInt = ThreadLocalRandom.current().nextInt(0, FILEGROUPTYPES.get(fileGroup).size());</span>
-<span class="fc" id="L133">      fileType = FILEGROUPTYPES.get(fileGroup).get(randInt);</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">    if (&quot;random&quot;.equals(fileType)) {</span>
+<span class="fc" id="L133">      int randInt = ThreadLocalRandom.current().nextInt(0, FILEGROUPTYPES.get(fileGroup).size());</span>
+<span class="fc" id="L134">      fileType = FILEGROUPTYPES.get(fileGroup).get(randInt);</span>
     }
 
-<span class="fc" id="L136">    String size = null;</span>
+<span class="fc" id="L137">    String size = null;</span>
     int randInt =
-<span class="fc" id="L138">        ThreadLocalRandom.current()</span>
-<span class="fc" id="L139">            .nextInt(0, FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileType).size());</span>
-<span class="fc" id="L140">    size = FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileType).get(randInt);</span>
+<span class="fc" id="L139">        ThreadLocalRandom.current()</span>
+<span class="fc" id="L140">            .nextInt(0, FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileType).size());</span>
+<span class="fc" id="L141">    size = FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileType).get(randInt);</span>
 
-<span class="fc" id="L142">    return getFileContentInternal(fileGroup, fileType, size);</span>
+<span class="fc" id="L143">    return getFileContentInternal(fileGroup, fileType, size);</span>
   }
 
   private byte[] getFileContent(String fileGroup, String fileTypeName, String size)
       throws IOException {
-<span class="fc bfc" id="L147" title="All 2 branches covered.">    if (&quot;random&quot;.equals(size)) {</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">    if (&quot;random&quot;.equals(size)) {</span>
       int randInt =
-<span class="fc" id="L149">          ThreadLocalRandom.current()</span>
-<span class="fc" id="L150">              .nextInt(0, FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileTypeName).size());</span>
-<span class="fc" id="L151">      size = FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileTypeName).get(randInt);</span>
+<span class="fc" id="L150">          ThreadLocalRandom.current()</span>
+<span class="fc" id="L151">              .nextInt(0, FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileTypeName).size());</span>
+<span class="fc" id="L152">      size = FILETYPESIZES.get(fileGroup + &quot;_&quot; + fileTypeName).get(randInt);</span>
     }
-<span class="fc" id="L153">    return getFileContentInternal(fileGroup, fileTypeName, size);</span>
+<span class="fc" id="L154">    return getFileContentInternal(fileGroup, fileTypeName, size);</span>
   }
 
   /**
@@ -191,7 +192,7 @@ import org.springframework.web.bind.annotation.RestController;
         &quot;image/x-icon&quot;
       })
   public @ResponseBody byte[] imageFileType(@PathVariable String fileType) throws IOException {
-<span class="fc" id="L194">    return getFileContent(&quot;image&quot;, fileType);</span>
+<span class="fc" id="L195">    return getFileContent(&quot;image&quot;, fileType);</span>
   }
 
   /**
@@ -226,7 +227,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;video/avi&quot;, &quot;video/mov&quot;, &quot;video/mp4&quot;, &quot;video/ogg&quot;, &quot;video/wmv&quot;})
   public @ResponseBody byte[] videoFileType(@PathVariable String fileType) throws IOException {
-<span class="fc" id="L229">    return getFileContent(&quot;video&quot;, fileType);</span>
+<span class="fc" id="L230">    return getFileContent(&quot;video&quot;, fileType);</span>
   }
 
   /**
@@ -261,7 +262,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;audio/mpeg3&quot;, &quot;audio/wav&quot;, &quot;audio/ogg&quot;})
   public @ResponseBody byte[] audioFileType(@PathVariable String fileType) throws IOException {
-<span class="fc" id="L264">    return getFileContent(&quot;audio&quot;, fileType);</span>
+<span class="fc" id="L265">    return getFileContent(&quot;audio&quot;, fileType);</span>
   }
 
   /**
@@ -307,7 +308,7 @@ import org.springframework.web.bind.annotation.RestController;
         &quot;application/rtf&quot;
       })
   public @ResponseBody byte[] documentFileType(@PathVariable String fileType) throws IOException {
-<span class="fc" id="L310">    return getFileContent(&quot;document&quot;, fileType);</span>
+<span class="fc" id="L311">    return getFileContent(&quot;document&quot;, fileType);</span>
   }
 
   /**
@@ -342,7 +343,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;text/csv&quot;, &quot;text/html&quot;, &quot;text/plain&quot;, &quot;application/zip&quot;})
   public @ResponseBody byte[] otherFileType(@PathVariable String fileType) throws IOException {
-<span class="fc" id="L345">    return getFileContent(&quot;other&quot;, fileType);</span>
+<span class="fc" id="L346">    return getFileContent(&quot;other&quot;, fileType);</span>
   }
 
   /**
@@ -377,7 +378,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {MediaType.IMAGE_JPEG_VALUE})
   public @ResponseBody byte[] imageJpgSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L380">    return getFileContent(&quot;image&quot;, &quot;jpg&quot;, size);</span>
+<span class="fc" id="L381">    return getFileContent(&quot;image&quot;, &quot;jpg&quot;, size);</span>
   }
 
   /**
@@ -412,7 +413,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {MediaType.IMAGE_GIF_VALUE})
   public @ResponseBody byte[] imageGifSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L415">    return getFileContent(&quot;image&quot;, &quot;gif&quot;, size);</span>
+<span class="fc" id="L416">    return getFileContent(&quot;image&quot;, &quot;gif&quot;, size);</span>
   }
 
   /**
@@ -447,7 +448,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {MediaType.IMAGE_PNG_VALUE})
   public @ResponseBody byte[] imagePngSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L450">    return getFileContent(&quot;image&quot;, &quot;png&quot;, size);</span>
+<span class="fc" id="L451">    return getFileContent(&quot;image&quot;, &quot;png&quot;, size);</span>
   }
 
   /**
@@ -482,7 +483,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;image/tiff&quot;})
   public @ResponseBody byte[] imageTiffSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L485">    return getFileContent(&quot;image&quot;, &quot;tiff&quot;, size);</span>
+<span class="fc" id="L486">    return getFileContent(&quot;image&quot;, &quot;tiff&quot;, size);</span>
   }
 
   /**
@@ -517,7 +518,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;image/x-icon&quot;})
   public @ResponseBody byte[] imageIcoSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L520">    return getFileContent(&quot;image&quot;, &quot;ico&quot;, size);</span>
+<span class="fc" id="L521">    return getFileContent(&quot;image&quot;, &quot;ico&quot;, size);</span>
   }
 
   /**
@@ -552,7 +553,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;video/avi&quot;})
   public @ResponseBody byte[] videoAviSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L555">    return getFileContent(&quot;video&quot;, &quot;avi&quot;, size);</span>
+<span class="fc" id="L556">    return getFileContent(&quot;video&quot;, &quot;avi&quot;, size);</span>
   }
 
   /**
@@ -587,7 +588,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;video/mov&quot;})
   public @ResponseBody byte[] videoMovSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L590">    return getFileContent(&quot;video&quot;, &quot;mov&quot;, size);</span>
+<span class="fc" id="L591">    return getFileContent(&quot;video&quot;, &quot;mov&quot;, size);</span>
   }
 
   /**
@@ -622,7 +623,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;video/mp4&quot;})
   public @ResponseBody byte[] videoMp4Size(@PathVariable String size) throws IOException {
-<span class="fc" id="L625">    return getFileContent(&quot;video&quot;, &quot;mp4&quot;, size);</span>
+<span class="fc" id="L626">    return getFileContent(&quot;video&quot;, &quot;mp4&quot;, size);</span>
   }
 
   /**
@@ -657,7 +658,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;video/ogg&quot;})
   public @ResponseBody byte[] videoOggSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L660">    return getFileContent(&quot;video&quot;, &quot;ogg&quot;, size);</span>
+<span class="fc" id="L661">    return getFileContent(&quot;video&quot;, &quot;ogg&quot;, size);</span>
   }
 
   /**
@@ -692,7 +693,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;video/wmv&quot;})
   public @ResponseBody byte[] videoWmvSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L695">    return getFileContent(&quot;video&quot;, &quot;wmv&quot;, size);</span>
+<span class="fc" id="L696">    return getFileContent(&quot;video&quot;, &quot;wmv&quot;, size);</span>
   }
 
   /**
@@ -727,7 +728,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;audio/mpeg3&quot;})
   public @ResponseBody byte[] audioMp3Size(@PathVariable String size) throws IOException {
-<span class="fc" id="L730">    return getFileContent(&quot;audio&quot;, &quot;mp3&quot;, size);</span>
+<span class="fc" id="L731">    return getFileContent(&quot;audio&quot;, &quot;mp3&quot;, size);</span>
   }
 
   /**
@@ -762,7 +763,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;audio/wav&quot;})
   public @ResponseBody byte[] audioWavSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L765">    return getFileContent(&quot;audio&quot;, &quot;wav&quot;, size);</span>
+<span class="fc" id="L766">    return getFileContent(&quot;audio&quot;, &quot;wav&quot;, size);</span>
   }
 
   /**
@@ -797,7 +798,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;audio/ogg&quot;})
   public @ResponseBody byte[] audioOggSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L800">    return getFileContent(&quot;audio&quot;, &quot;ogg&quot;, size);</span>
+<span class="fc" id="L801">    return getFileContent(&quot;audio&quot;, &quot;ogg&quot;, size);</span>
   }
 
   /**
@@ -832,7 +833,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/doc&quot;})
   public @ResponseBody byte[] documentDocSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L835">    return getFileContent(&quot;document&quot;, &quot;doc&quot;, size);</span>
+<span class="fc" id="L836">    return getFileContent(&quot;document&quot;, &quot;doc&quot;, size);</span>
   }
 
   /**
@@ -867,7 +868,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/doc&quot;})
   public @ResponseBody byte[] documentDocxSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L870">    return getFileContent(&quot;document&quot;, &quot;docx&quot;, size);</span>
+<span class="fc" id="L871">    return getFileContent(&quot;document&quot;, &quot;docx&quot;, size);</span>
   }
 
   /**
@@ -902,7 +903,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/xls&quot;})
   public @ResponseBody byte[] documentXlsSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L905">    return getFileContent(&quot;document&quot;, &quot;xls&quot;, size);</span>
+<span class="fc" id="L906">    return getFileContent(&quot;document&quot;, &quot;xls&quot;, size);</span>
   }
 
   /**
@@ -937,7 +938,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/xls&quot;})
   public @ResponseBody byte[] documentXlsxSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L940">    return getFileContent(&quot;document&quot;, &quot;xlsx&quot;, size);</span>
+<span class="fc" id="L941">    return getFileContent(&quot;document&quot;, &quot;xlsx&quot;, size);</span>
   }
 
   /**
@@ -972,7 +973,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/ppt&quot;})
   public @ResponseBody byte[] documentPptSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L975">    return getFileContent(&quot;document&quot;, &quot;ppt&quot;, size);</span>
+<span class="fc" id="L976">    return getFileContent(&quot;document&quot;, &quot;ppt&quot;, size);</span>
   }
 
   /**
@@ -1007,7 +1008,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/pdf&quot;})
   public @ResponseBody byte[] documentPdfSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1010">    return getFileContent(&quot;document&quot;, &quot;pdf&quot;, size);</span>
+<span class="fc" id="L1011">    return getFileContent(&quot;document&quot;, &quot;pdf&quot;, size);</span>
   }
 
   /**
@@ -1042,7 +1043,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/odp&quot;})
   public @ResponseBody byte[] documentOdpSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1045">    return getFileContent(&quot;document&quot;, &quot;odp&quot;, size);</span>
+<span class="fc" id="L1046">    return getFileContent(&quot;document&quot;, &quot;odp&quot;, size);</span>
   }
 
   /**
@@ -1077,7 +1078,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/ods&quot;})
   public @ResponseBody byte[] documentOdsSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1080">    return getFileContent(&quot;document&quot;, &quot;ods&quot;, size);</span>
+<span class="fc" id="L1081">    return getFileContent(&quot;document&quot;, &quot;ods&quot;, size);</span>
   }
 
   /**
@@ -1112,7 +1113,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/odt&quot;})
   public @ResponseBody byte[] documentOdtSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1115">    return getFileContent(&quot;document&quot;, &quot;odt&quot;, size);</span>
+<span class="fc" id="L1116">    return getFileContent(&quot;document&quot;, &quot;odt&quot;, size);</span>
   }
 
   /**
@@ -1147,7 +1148,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/rtf&quot;})
   public @ResponseBody byte[] documentRtfSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1150">    return getFileContent(&quot;document&quot;, &quot;rtf&quot;, size);</span>
+<span class="fc" id="L1151">    return getFileContent(&quot;document&quot;, &quot;rtf&quot;, size);</span>
   }
 
   /**
@@ -1182,7 +1183,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;text/csv&quot;})
   public @ResponseBody byte[] otherCsvSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1185">    return getFileContent(&quot;other&quot;, &quot;csv&quot;, size);</span>
+<span class="fc" id="L1186">    return getFileContent(&quot;other&quot;, &quot;csv&quot;, size);</span>
   }
 
   /**
@@ -1217,7 +1218,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;text/html&quot;})
   public @ResponseBody byte[] otherHtmlSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1220">    return getFileContent(&quot;other&quot;, &quot;html&quot;, size);</span>
+<span class="fc" id="L1221">    return getFileContent(&quot;other&quot;, &quot;html&quot;, size);</span>
   }
 
   /**
@@ -1252,7 +1253,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;text/plain&quot;})
   public @ResponseBody byte[] otherTxtSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1255">    return getFileContent(&quot;other&quot;, &quot;txt&quot;, size);</span>
+<span class="fc" id="L1256">    return getFileContent(&quot;other&quot;, &quot;txt&quot;, size);</span>
   }
 
   /**
@@ -1287,7 +1288,7 @@ import org.springframework.web.bind.annotation.RestController;
       method = RequestMethod.GET,
       produces = {&quot;application/zip&quot;})
   public @ResponseBody byte[] otherZipSize(@PathVariable String size) throws IOException {
-<span class="fc" id="L1290">    return getFileContent(&quot;other&quot;, &quot;zip&quot;, size);</span>
+<span class="fc" id="L1291">    return getFileContent(&quot;other&quot;, &quot;zip&quot;, size);</span>
   }
   /**
    * *********************************************************************************************************************************************

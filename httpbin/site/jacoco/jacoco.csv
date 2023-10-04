@@ -17,8 +17,8 @@ httpbin,com.jibi.controller,HealthController,0,7,0,0,0,2,0,2,0,2
 httpbin,com.jibi.model,SystemInfoModel.MemoryInfoModel,0,106,0,0,0,12,0,19,0,19
 httpbin,com.jibi.model,UploadInfoModel,0,45,0,0,0,8,0,13,0,13
 httpbin,com.jibi.model,SystemInfoModel.OsInfoModel,0,58,0,0,0,8,0,11,0,11
-httpbin,com.jibi.model,HealthModel,0,33,0,0,0,9,0,5,0,5
 httpbin,com.jibi.model,SystemInfoModel.CpuInfoModel,0,58,0,0,0,8,0,11,0,11
+httpbin,com.jibi.model,HealthModel,0,33,0,0,0,9,0,5,0,5
 httpbin,com.jibi.model,SystemInfoModel,0,51,0,0,0,17,0,9,0,9
 httpbin,com.jibi.model,SystemInfoModel.DiskInfoModel,37,45,0,0,2,8,2,13,2,13
 httpbin,com.jibi.schedule,Schedulers,0,15,0,0,0,6,0,3,0,3
