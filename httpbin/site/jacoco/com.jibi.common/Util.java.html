@@ -7,8 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 <span class="fc" id="L7">@Slf4j</span>
 public class Util {
 
+  /** Kilobytes */
   public static final long KILOBYTES = 1024;
+
+  /** Megabytes */
   public static final long MEGABYTES = 1024 * 1024;
+
+  /** Gigabytes */
   public static final long GIGABYTES = 1024 * 1024 * 1024;
 
   private Util() {}
@@ -19,10 +24,10 @@ public class Util {
    * @param milliSeconds the milli seconds
    */
   public static void sleepMillis(int milliSeconds) {
-<span class="fc" id="L22">    log.debug(&quot;Sleeping &quot; + milliSeconds + &quot; milli seconds&quot;);</span>
-<span class="fc" id="L23">    sleepMillisSilent(milliSeconds);</span>
-<span class="fc" id="L24">    log.debug(&quot;Slept &quot; + milliSeconds + &quot; milli seconds&quot;);</span>
-<span class="fc" id="L25">  }</span>
+<span class="fc" id="L27">    log.debug(&quot;Sleeping &quot; + milliSeconds + &quot; milli seconds&quot;);</span>
+<span class="fc" id="L28">    sleepMillisSilent(milliSeconds);</span>
+<span class="fc" id="L29">    log.debug(&quot;Slept &quot; + milliSeconds + &quot; milli seconds&quot;);</span>
+<span class="fc" id="L30">  }</span>
 
   /**
    * Sleep millis silent.
@@ -31,12 +36,12 @@ public class Util {
    */
   public static void sleepMillisSilent(int milliSeconds) {
     try {
-<span class="fc" id="L34">      Thread.sleep(milliSeconds);</span>
-<span class="fc" id="L35">    } catch (InterruptedException interruptedException) {</span>
-<span class="fc" id="L36">      log.error(&quot;Thread interrupted&quot;, interruptedException);</span>
+<span class="fc" id="L39">      Thread.sleep(milliSeconds);</span>
+<span class="fc" id="L40">    } catch (InterruptedException interruptedException) {</span>
+<span class="fc" id="L41">      log.error(&quot;Thread interrupted&quot;, interruptedException);</span>
       // throw new RuntimeException(&quot;Thread interrupted&quot;, interruptedException);
-<span class="fc" id="L38">    }</span>
-<span class="fc" id="L39">  }</span>
+<span class="fc" id="L43">    }</span>
+<span class="fc" id="L44">  }</span>
 
   /**
    * Sleep seconds.
@@ -44,10 +49,10 @@ public class Util {
    * @param seconds the seconds
    */
   public static void sleepSeconds(int seconds) {
-<span class="fc" id="L47">    log.debug(&quot;Sleeping &quot; + seconds + &quot; seconds&quot;);</span>
-<span class="fc" id="L48">    sleepSecondsSilent(seconds);</span>
-<span class="fc" id="L49">    log.debug(&quot;Slept &quot; + seconds + &quot; seconds&quot;);</span>
-<span class="fc" id="L50">  }</span>
+<span class="fc" id="L52">    log.debug(&quot;Sleeping &quot; + seconds + &quot; seconds&quot;);</span>
+<span class="fc" id="L53">    sleepSecondsSilent(seconds);</span>
+<span class="fc" id="L54">    log.debug(&quot;Slept &quot; + seconds + &quot; seconds&quot;);</span>
+<span class="fc" id="L55">  }</span>
 
   /**
    * Sleep seconds silent.
@@ -55,8 +60,8 @@ public class Util {
    * @param seconds the seconds
    */
   public static void sleepSecondsSilent(int seconds) {
-<span class="fc" id="L58">    sleepMillisSilent(seconds * 1000);</span>
-<span class="fc" id="L59">  }</span>
+<span class="fc" id="L63">    sleepMillisSilent(seconds * 1000);</span>
+<span class="fc" id="L64">  }</span>
 
   /**
    * Sleep minutes.
@@ -64,10 +69,10 @@ public class Util {
    * @param minutes the minutes
    */
   public static void sleepMinutes(int minutes) {
-<span class="fc" id="L67">    log.debug(&quot;Sleeping &quot; + minutes + &quot; minutes&quot;);</span>
-<span class="fc" id="L68">    sleepMinutesSilent(minutes);</span>
-<span class="fc" id="L69">    log.debug(&quot;Slept &quot; + minutes + &quot; minutes&quot;);</span>
-<span class="fc" id="L70">  }</span>
+<span class="fc" id="L72">    log.debug(&quot;Sleeping &quot; + minutes + &quot; minutes&quot;);</span>
+<span class="fc" id="L73">    sleepMinutesSilent(minutes);</span>
+<span class="fc" id="L74">    log.debug(&quot;Slept &quot; + minutes + &quot; minutes&quot;);</span>
+<span class="fc" id="L75">  }</span>
 
   /**
    * Sleep minutes silent.
@@ -75,8 +80,8 @@ public class Util {
    * @param minutes the minutes
    */
   public static void sleepMinutesSilent(int minutes) {
-<span class="fc" id="L78">    sleepSecondsSilent(minutes * 60);</span>
-<span class="fc" id="L79">  }</span>
+<span class="fc" id="L83">    sleepSecondsSilent(minutes * 60);</span>
+<span class="fc" id="L84">  }</span>
 
   /**
    * Check null or blank boolean.
@@ -85,13 +90,13 @@ public class Util {
    * @return the boolean
    */
   public static boolean checkNullOrBlank(String str) {
-<span class="fc bfc" id="L88" title="All 2 branches covered.">    if (str == null) {</span>
-<span class="fc" id="L89">      return true;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">    if (str == null) {</span>
+<span class="fc" id="L94">      return true;</span>
     }
-<span class="fc bfc" id="L91" title="All 2 branches covered.">    if (str.trim().length() == 0) {</span>
-<span class="fc" id="L92">      return true;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">    if (str.trim().length() == 0) {</span>
+<span class="fc" id="L97">      return true;</span>
     }
-<span class="fc" id="L94">    return false;</span>
+<span class="fc" id="L99">    return false;</span>
   }
 
   /**
@@ -102,7 +107,7 @@ public class Util {
    * @return the int
    */
   public static int randomNumber(int min, int max) {
-<span class="fc" id="L105">    return min + ((int) Math.round((Math.random()) * (max - min)));</span>
+<span class="fc" id="L110">    return min + ((int) Math.round((Math.random()) * (max - min)));</span>
   }
 
   /**
@@ -112,17 +117,17 @@ public class Util {
    * @return the formatted size
    */
   public static String getFormattedSize(long memory) {
-<span class="fc" id="L115">    NumberFormat format = NumberFormat.getInstance();</span>
-<span class="fc bfc" id="L116" title="All 2 branches covered.">    if (memory &gt; GIGABYTES) {</span>
-<span class="fc" id="L117">      return format.format(memory / GIGABYTES) + &quot;GB&quot;;</span>
+<span class="fc" id="L120">    NumberFormat format = NumberFormat.getInstance();</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">    if (memory &gt; GIGABYTES) {</span>
+<span class="fc" id="L122">      return format.format(memory / GIGABYTES) + &quot;GB&quot;;</span>
     }
-<span class="fc bfc" id="L119" title="All 2 branches covered.">    if (memory &gt; MEGABYTES) {</span>
-<span class="fc" id="L120">      return format.format(memory / MEGABYTES) + &quot;MB&quot;;</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">    if (memory &gt; MEGABYTES) {</span>
+<span class="fc" id="L125">      return format.format(memory / MEGABYTES) + &quot;MB&quot;;</span>
     }
-<span class="fc bfc" id="L122" title="All 2 branches covered.">    if (memory &gt; KILOBYTES) {</span>
-<span class="fc" id="L123">      return format.format(memory / KILOBYTES) + &quot;KB&quot;;</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">    if (memory &gt; KILOBYTES) {</span>
+<span class="fc" id="L128">      return format.format(memory / KILOBYTES) + &quot;KB&quot;;</span>
     }
-<span class="fc" id="L125">    return format.format(memory) + &quot;B&quot;;</span>
+<span class="fc" id="L130">    return format.format(memory) + &quot;B&quot;;</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
