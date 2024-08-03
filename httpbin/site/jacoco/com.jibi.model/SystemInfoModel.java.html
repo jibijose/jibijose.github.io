@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /** The type System info model. */
-<span class="fc" id="L11">@NoArgsConstructor</span>
+@NoArgsConstructor
 public class SystemInfoModel {
 
   private CpuInfoModel cpu;
@@ -93,15 +93,15 @@ public class SystemInfoModel {
   }
 
   /** The type Cpu info model. */
-<span class="fc" id="L96">  @Setter</span>
+  @Setter
   @Getter
-<span class="fc" id="L98">  @AllArgsConstructor</span>
-<span class="fc" id="L99">  @NoArgsConstructor</span>
+  @AllArgsConstructor
+  @NoArgsConstructor
   public static class CpuInfoModel implements Cloneable {
-<span class="fc" id="L101">    private String processCpuLoad;</span>
-<span class="fc" id="L102">    private String processCpuTime;</span>
-<span class="fc" id="L103">    private String systemCpuLoad;</span>
-<span class="fc" id="L104">    private String systemLoadAverage;</span>
+    private String processCpuLoad;
+    private String processCpuTime;
+    private String systemCpuLoad;
+    private String systemLoadAverage;
 
     @Override
     protected CpuInfoModel clone() {
@@ -110,15 +110,15 @@ public class SystemInfoModel {
   }
 
   /** The type Os info model. */
-<span class="fc" id="L113">  @Setter</span>
+  @Setter
   @Getter
-<span class="fc" id="L115">  @AllArgsConstructor</span>
-<span class="fc" id="L116">  @NoArgsConstructor</span>
+  @AllArgsConstructor
+  @NoArgsConstructor
   public static class OsInfoModel implements Cloneable {
-<span class="fc" id="L118">    private String name;</span>
-<span class="fc" id="L119">    private String version;</span>
-<span class="fc" id="L120">    private String arch;</span>
-<span class="fc" id="L121">    private String processors;</span>
+    private String name;
+    private String version;
+    private String arch;
+    private String processors;
 
     @Override
     protected OsInfoModel clone() {
@@ -127,19 +127,19 @@ public class SystemInfoModel {
   }
 
   /** The type Memory info model. */
-<span class="fc" id="L130">  @Setter</span>
+  @Setter
   @Getter
-<span class="fc" id="L132">  @AllArgsConstructor</span>
-<span class="fc" id="L133">  @NoArgsConstructor</span>
+  @AllArgsConstructor
+  @NoArgsConstructor
   public static class MemoryInfoModel implements Cloneable {
-<span class="fc" id="L135">    private String freeBytes;</span>
-<span class="fc" id="L136">    private String freeFormatted;</span>
-<span class="fc" id="L137">    private String allocatedBytes;</span>
-<span class="fc" id="L138">    private String allocatedFormatted;</span>
-<span class="fc" id="L139">    private String maxBytes;</span>
-<span class="fc" id="L140">    private String maxFormatted;</span>
-<span class="fc" id="L141">    private String usedBytes;</span>
-<span class="fc" id="L142">    private String usedFormatted;</span>
+    private String freeBytes;
+    private String freeFormatted;
+    private String allocatedBytes;
+    private String allocatedFormatted;
+    private String maxBytes;
+    private String maxFormatted;
+    private String usedBytes;
+    private String usedFormatted;
 
     @Override
     protected MemoryInfoModel clone() {
@@ -156,17 +156,17 @@ public class SystemInfoModel {
   }
 
   /** The type Disk info model. */
-<span class="fc" id="L159">  @Setter</span>
+  @Setter
   @Getter
-<span class="nc" id="L161">  @AllArgsConstructor</span>
-<span class="fc" id="L162">  @NoArgsConstructor</span>
+  @AllArgsConstructor
+  @NoArgsConstructor
   public static class DiskInfoModel implements Cloneable {
-<span class="fc" id="L164">    private String freeSpace;</span>
-<span class="fc" id="L165">    private String freeSpaceFormatted;</span>
-<span class="fc" id="L166">    private String usableSpace;</span>
-<span class="fc" id="L167">    private String usableSpaceFormatted;</span>
-<span class="fc" id="L168">    private String totalSpace;</span>
-<span class="fc" id="L169">    private String totalSpaceFormatted;</span>
+    private String freeSpace;
+    private String freeSpaceFormatted;
+    private String usableSpace;
+    private String usableSpaceFormatted;
+    private String totalSpace;
+    private String totalSpaceFormatted;
 
     @Override
     protected DiskInfoModel clone() {
@@ -180,4 +180,4 @@ public class SystemInfoModel {
     }
   }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
