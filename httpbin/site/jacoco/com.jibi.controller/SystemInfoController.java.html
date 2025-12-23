@@ -69,8 +69,8 @@ import org.springframework.web.bind.annotation.RestController;
 <span class="fc" id="L69">    SystemInfoModel.CpuInfoModel cpuInfoModel = new SystemInfoModel.CpuInfoModel();</span>
 <span class="fc" id="L70">    cpuInfoModel.setProcessCpuLoad(Double.toString(operatingSystemMXBean.getProcessCpuLoad()));</span>
 <span class="fc" id="L71">    cpuInfoModel.setProcessCpuTime(Double.toString(operatingSystemMXBean.getProcessCpuTime()));</span>
-<span class="fc" id="L72">    cpuInfoModel.setSystemCpuLoad(Double.toString(operatingSystemMXBean.getSystemCpuLoad()));</span>
-<span class="fc" id="L73">    cpuInfoModel.setSystemLoadAverage(Double.toString(operatingSystemMXBean.getSystemCpuLoad()));</span>
+<span class="fc" id="L72">    cpuInfoModel.setSystemCpuLoad(Double.toString(operatingSystemMXBean.getCpuLoad()));</span>
+<span class="fc" id="L73">    cpuInfoModel.setSystemLoadAverage(Double.toString(operatingSystemMXBean.getCpuLoad()));</span>
 <span class="fc" id="L74">    return cpuInfoModel;</span>
   }
 
