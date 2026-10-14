@@ -245,7 +245,7 @@
     </div>
     <div class="user-profile" id="user-profile" style="display: none;">
       <span id="user-email"></span>
-      <button class="btn-signout" onclick="signOut()">Sign out</button>
+      <button class="btn-signout" onclick="handleSignOut()">Sign out</button>
     </div>
   </header>
 
@@ -254,30 +254,24 @@
   </main>
 
   <script>
-    const SUPABASE_URL = "https://hfprnenkpqekftgxqgrp.supabase.co";
-    // Make sure to paste your real anon public key from Project Settings -> API:
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmcHJuZW5rcHFla2Z0Z3hxZ3JwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NTgyOTAsImV4cCI6MjEwNzUzNDI5MH0.bcVU-LtnPAV3EVu6k0f33F2R2qoqh1ZTvKW2KGPKuUg";
+    const SUPABASE_PROJECT_URL = "https://hfprnenkpqekftgxqgrp.supabase.co";
+    const SUPABASE_ANON_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmcHJuZW5rcHFla2Z0Z3hxZ3JwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NTgyOTAsImV4cCI6MjEwNzUzNDI5MH0.bcVU-LtnPAV3EVu6k0f33F2R2qoqh1ZTvKW2KGPKuUg";
 
-    let supabase = null;
+    let supabaseClient = null;
 
-    async function init() {
+    async function initApp() {
       const mainContent = document.getElementById('main-content');
       const userProfile = document.getElementById('user-profile');
       const userEmailSpan = document.getElementById('user-email');
 
       if (!window.supabase) {
-        throw new Error("Supabase library failed to load from CDN. Please check your internet connection.");
+        throw new Error("Supabase SDK failed to load from CDN. Please check your internet connection.");
       }
 
-      if (SUPABASE_ANON_KEY.includes("PASTE_YOUR")) {
-        throw new Error("SUPABASE_ANON_KEY is not configured in index.html. Please paste your anon public key.");
-      }
-
-      // Initialize Supabase safely
-      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      supabaseClient = window.supabase.createClient(SUPABASE_PROJECT_URL, SUPABASE_ANON_PUBLIC_KEY);
 
       try {
-        const { data, error: sessionError } = await supabase.auth.getSession();
+        const { data, error: sessionError } = await supabaseClient.auth.getSession();
         if (sessionError) throw sessionError;
 
         const session = data?.session;
@@ -299,7 +293,7 @@
           `;
 
           document.getElementById('login-btn').addEventListener('click', async () => {
-            const { error } = await supabase.auth.signInWithOAuth({
+            const { error } = await supabaseClient.auth.signInWithOAuth({
               provider: 'google',
               options: { redirectTo: window.location.href }
             });
@@ -308,7 +302,6 @@
           return;
         }
 
-        // User is logged in
         const userEmail = session.user.email;
         userEmailSpan.innerText = userEmail;
         userProfile.style.display = 'flex';
@@ -323,7 +316,7 @@
         `;
 
         // 2. Fetch permitted apps for this user from get_my_apps()
-        const { data: userApps, error: rpcError } = await supabase.rpc('get_my_apps');
+        const { data: userApps, error: rpcError } = await supabaseClient.rpc('get_my_apps');
 
         if (rpcError) {
           throw new Error("Failed to load permissions: " + rpcError.message);
@@ -336,7 +329,7 @@
             <div class="empty-state">
               <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <h3 style="margin-top:1rem;color:var(--text-main);">No Apps Assigned</h3>
-              <p style="margin-top:0.5rem;color:var(--text-muted);">Your account (${userEmail}) has not been granted access to any APKs yet.</p>
+              <p style="margin-top:0.5rem;color:var(--text-muted);">Your account (${userEmail}) has not been granted access to any APK releases yet.</p>
             </div>
           `;
           document.getElementById('fetching-loader').style.display = 'none';
@@ -348,7 +341,7 @@
         let renderedCount = 0;
 
         for (const appName of allowedAppList) {
-          const { data: files } = await supabase.storage
+          const { data: files } = await supabaseClient.storage
             .from('apks')
             .list(appName, { limit: 1, sortBy: { column: 'created_at', order: 'desc' } });
 
@@ -356,7 +349,7 @@
             const apk = files[0];
             const fullPath = `${appName}/${apk.name}`;
 
-            const { data: signData } = await supabase.storage
+            const { data: signData } = await supabaseClient.storage
               .from('apks')
               .createSignedUrl(fullPath, 3600);
 
@@ -402,7 +395,7 @@
         mainContent.innerHTML = `
           <div class="card" style="margin: 3rem auto; text-align: left;">
             <p style="color: var(--danger); margin-bottom: 1rem; word-break: break-all;"><strong>Error:</strong> ${err.message}</p>
-            <button class="btn-download" style="width:100%;" onclick="signOut()">Sign out & try again</button>
+            <button class="btn-download" style="width:100%;" onclick="handleSignOut()">Sign out & try again</button>
           </div>
         `;
       }
@@ -413,15 +406,15 @@
       return str.replace(/app$/i, ' App').replace(/^./, c => c.toUpperCase());
     }
 
-    async function signOut() {
-      if (supabase) await supabase.auth.signOut();
+    async function handleSignOut() {
+      if (supabaseClient) await supabaseClient.auth.signOut();
       window.location.reload();
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', initApp);
     } else {
-      init();
+      initApp();
     }
   </script>
 </body>
