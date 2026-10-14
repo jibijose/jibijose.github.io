@@ -1,131 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Release Download</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-    .card {
-      background: #1e293b;
-      padding: 2.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      text-align: center;
-      max-width: 420px;
-      width: 90%;
-    }
-    h2 { margin-top: 0; color: #38bdf8; }
-    p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; }
-    .btn {
-      background: #38bdf8;
-      color: #0f172a;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: #0ea5e9; }
-    .error { color: #f87171; margin-top: 1rem; font-size: 0.9rem; }
-    .loader {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      border: 3px solid rgba(255,255,255,.3);
-      border-radius: 50%;
-      border-top-color: #38bdf8;
-      animation: spin 1s ease-in-out infinite;
-      margin-top: 1rem;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
-</head>
-<body>
-
-<div class="card">
-  <h2>APK Download Portal</h2>
-  <div id="status-area">
-    <div class="loader"></div>
-    <p id="status-text">Checking authentication...</p>
-  </div>
-</div>
-
 <script>
-  // 1. Supabase Configuration (Use your anon/public key here - SAFE for browsers)
+  // 1. Fill your project URL and ANON key (Project Settings -> API -> anon public)
   const SUPABASE_URL = "https://hfprnenkpqekftgxqgrp.supabase.co";
-  const SUPABASE_ANON_KEY = "<YOUR_SUPABASE_ANON_KEY>"; // From Project Settings -> API -> anon public
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."; // <-- Paste your anon key here
+  
   const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  // 2. Read '?app=batteryapp' from the URL query params
   const urlParams = new URLSearchParams(window.location.search);
   const requestedApp = urlParams.get('app') || 'batteryapp';
 
-  async function handleDownloadFlow() {
-    const statusText = document.getElementById('status-text');
+  async function init() {
     const statusArea = document.getElementById('status-area');
 
-    // Check if the user is already signed in
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (!session) {
-      statusText.innerText = "Redirecting to Google sign in...";
-      
-      // Auto-redirect to Google Auth
-      await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.href // Returns right back to this URL after login
-        }
-      });
-      return;
-    }
-
-    // User is logged in!
-    const userEmail = session.user.email;
-    statusText.innerText = `Signed in as ${userEmail}. Checking permissions for '${requestedApp}'...`;
-
     try {
-      // Find the latest APK in the app's folder
+      // Check current session
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) throw sessionError;
+
+      if (!session) {
+        // Show Sign-in button (prevents incognito pop-up/redirect blockers)
+        statusArea.innerHTML = `
+          <p>Please sign in with your Google account to download <strong>${requestedApp}</strong>.</p>
+          <button class="btn" id="login-btn">
+            <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/></svg>
+            Sign in with Google
+          </button>
+        `;
+
+        document.getElementById('login-btn').addEventListener('click', async () => {
+          const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+              redirectTo: window.location.href
+            }
+          });
+          if (error) {
+            alert("Google Sign-In Error: " + error.message);
+          }
+        });
+        return;
+      }
+
+      // Signed in: verify permissions and start download
+      const userEmail = session.user.email;
+      statusArea.innerHTML = `
+        <div class="loader"></div>
+        <p>Signed in as <strong>${userEmail}</strong></p>
+        <p>Checking permissions for <strong>${requestedApp}</strong>...</p>
+      `;
+
       const { data: files, error: listError } = await supabase.storage
         .from('apks')
         .list(requestedApp, { limit: 10, sortBy: { column: 'created_at', order: 'desc' } });
 
       if (listError || !files || files.length === 0) {
-        throw new Error("No release APK found or you do not have permission to download this app.");
+        throw new Error(`No APK found for '${requestedApp}', or you do not have permission.`);
       }
 
       const latestApk = files[0].name;
       const fullPath = `${requestedApp}/${latestApk}`;
 
-      // Generate the 5-minute download link
       const { data: signData, error: signError } = await supabase.storage
         .from('apks')
         .createSignedUrl(fullPath, 300);
 
       if (signError || !signData?.signedUrl) {
-        throw new Error("Access Denied: Your Google account is not authorized to download this app.");
+        throw new Error(`Access Denied: ${userEmail} is not authorized to download ${requestedApp}.`);
       }
 
-      // Automatically trigger download
       statusArea.innerHTML = `
-        <p style="color: #4ade80;">Permission verified!</p>
+        <p style="color: #4ade80; font-weight: 600;">Permission Verified!</p>
         <p>Downloading <strong>${latestApk}</strong>...</p>
         <a class="btn" href="${signData.signedUrl}">Click here if download doesn't start</a>
       `;
@@ -134,12 +77,10 @@
     } catch (err) {
       statusArea.innerHTML = `
         <p class="error">${err.message}</p>
-        <button class="btn" onclick="supabase.auth.signOut().then(() => location.reload())">Sign in with different account</button>
+        <button class="btn" onclick="supabase.auth.signOut().then(() => location.reload())">Try another account</button>
       `;
     }
   }
 
-  handleDownloadFlow();
+  init();
 </script>
-</body>
-</html>
