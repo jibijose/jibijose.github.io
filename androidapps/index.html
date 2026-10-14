@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Release Portal | Jibi Jose</title>
+  <title>App Release Portal</title>
   <!-- Supabase JS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <!-- Google Fonts -->
@@ -248,7 +248,7 @@
 </head>
 <body>
 
-  <!-- Sticky Header -->
+  <!-- Header -->
   <header>
     <div class="brand">
       <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -266,12 +266,9 @@
   </main>
 
   <script>
-    // 1. Supabase Project Configuration
+    // 1. Supabase Project Configuration (Project Settings -> API -> anon public)
     const SUPABASE_URL = "https://hfprnenkpqekftgxqgrp.supabase.co";
-    const SUPABASE_ANON_KEY = "PASTE_YOUR_FULL_ANON_PUBLIC_KEY_HERE"; // From Project Settings -> API
-
-    // All available app modules in your workspace
-    const KNOWN_APPS = ['batteryapp', 'profileapp', 'slgapp', 'syncapp', 'taskapp'];
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmcHJuZW5rcHFla2Z0Z3hxZ3JwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NTgyOTAsImV4cCI6MjEwNzUzNDI5MH0.bcVU-LtnPAV3EVu6k0f33F2R2qoqh1ZTvKW2KGPKuUg";
 
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -285,13 +282,13 @@
         const { data: { session }, error: sessionError } = await supabase.auth.getSession();
         if (sessionError) throw sessionError;
 
-        // If not logged in -> Show Google Sign-in screen
+        // If not logged in -> Show Google Sign-in screen (No app names exposed!)
         if (!session) {
           userProfile.style.display = 'none';
           mainContent.innerHTML = `
             <div class="auth-container">
               <div class="card">
-                <h1>Welcome</h1>
+                <h1>App Releases</h1>
                 <p class="subtitle">Sign in with your authorized Google account to view and download available APK releases.</p>
                 <button class="btn-google" id="login-btn">
                   <svg width="20" height="20" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/></svg>
@@ -324,34 +321,26 @@
           <div class="apps-list" id="apps-list" style="display: none;"></div>
         `;
 
-        // 2. Fetch user's permissions
-        const { data: perms, error: permError } = await supabase
-          .from('apk_permissions')
-          .select('app_name');
+        // 2. Dynamically ask Supabase which apps THIS user has permission to see
+        const { data: userApps, error: rpcError } = await supabase.rpc('get_my_apps');
 
-        if (permError) console.warn("Permissions query:", permError.message);
+        if (rpcError) throw rpcError;
 
-        const permittedApps = (perms || []).map(p => p.app_name);
-        const hasAllAccess = permittedApps.includes('*');
-
-        // Filter the apps this user is allowed to see
-        const allowedAppList = hasAllAccess 
-          ? KNOWN_APPS 
-          : KNOWN_APPS.filter(app => permittedApps.includes(app));
+        const allowedAppList = (userApps || []).map(row => row.app_name);
 
         if (allowedAppList.length === 0) {
           document.getElementById('main-content').innerHTML += `
             <div class="empty-state">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <h3>No Apps Assigned</h3>
-              <p>Your Google account (${userEmail}) has not been granted access to any APKs yet.</p>
+              <p>Your Google account (${userEmail}) has not been granted access to any APK releases yet.</p>
             </div>
           `;
           document.getElementById('fetching-loader').style.display = 'none';
           return;
         }
 
-        // 3. For each permitted app, find the latest APK and create a signed download URL
+        // 3. For each permitted app, fetch latest release and generate signed URL
         const appsContainer = document.getElementById('apps-list');
         let renderedCount = 0;
 
@@ -364,7 +353,6 @@
             const apk = files[0];
             const fullPath = `${appName}/${apk.name}`;
 
-            // Generate 1-hour signed download URL
             const { data: signData } = await supabase.storage
               .from('apks')
               .createSignedUrl(fullPath, 3600);
@@ -417,15 +405,12 @@
       }
     }
 
+    // Generic formatter without exposing app names (e.g. 'batteryapp' -> 'Battery App')
     function formatAppName(str) {
-      const map = {
-        'batteryapp': 'Battery App',
-        'profileapp': 'Profile App',
-        'slgapp': 'SLG App',
-        'syncapp': 'Sync App',
-        'taskapp': 'Task App'
-      };
-      return map[str] || str.charAt(0).toUpperCase() + str.slice(1);
+      if (!str) return '';
+      return str
+        .replace(/app$/i, ' App')
+        .replace(/^./, c => c.toUpperCase());
     }
 
     async function signOut() {
