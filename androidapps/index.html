@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>App Release Portal</title>
+  
+  <!-- Global error trap: displays any error on screen instead of silent spin -->
+  <script>
+    window.onerror = function(msg, url, line) {
+      setTimeout(function() {
+        var el = document.getElementById('main-content');
+        if (el) {
+          el.innerHTML = '<div class="card" style="margin: 2rem auto; text-align: left;"><p style="color:#f87171;font-size:0.9rem;word-break:break-all;"><strong>JavaScript Error (line ' + line + '):</strong><br>' + msg + '</p><button class="btn-download" style="margin-top:1rem;width:100%;" onclick="location.reload()">Reload</button></div>';
+        }
+      }, 100);
+      return false;
+    };
+  </script>
+
   <!-- Supabase JS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <!-- Google Fonts -->
@@ -35,7 +49,6 @@
       flex-direction: column;
     }
 
-    /* Header */
     header {
       background: rgba(30, 41, 59, 0.7);
       backdrop-filter: blur(12px);
@@ -84,7 +97,6 @@
       border-color: var(--danger);
     }
 
-    /* Container */
     main {
       flex: 1;
       max-width: 900px;
@@ -93,7 +105,6 @@
       padding: 0 1.5rem;
     }
 
-    /* Auth Splash Card */
     .auth-container {
       display: flex;
       justify-content: center;
@@ -115,7 +126,6 @@
     h1 { font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-main); }
     .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.5; }
 
-    /* Buttons */
     .btn-google {
       background: #ffffff;
       color: #1f2937;
@@ -148,6 +158,7 @@
       font-size: 0.9rem;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       transition: all 0.2s;
       border: none;
@@ -159,17 +170,11 @@
       transform: translateY(-1px);
     }
 
-    /* App Grid */
-    .apps-header {
-      margin-bottom: 1.5rem;
-    }
+    .apps-header { margin-bottom: 1.5rem; }
     .apps-header h2 { font-size: 1.35rem; }
     .apps-header p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem; }
 
-    .apps-list {
-      display: grid;
-      gap: 1rem;
-    }
+    .apps-list { display: grid; gap: 1rem; }
 
     .app-item {
       background: var(--card-bg);
@@ -186,11 +191,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
-    .app-details {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+    .app-details { display: flex; align-items: center; gap: 1rem; }
 
     .app-icon {
       width: 48px;
@@ -221,7 +222,6 @@
       border: 1px solid #334155;
     }
 
-    /* States */
     .loader {
       width: 32px;
       height: 32px;
@@ -233,22 +233,11 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .empty-state {
-      text-align: center;
-      padding: 4rem 1rem;
-      color: var(--text-muted);
-    }
-    .empty-state svg {
-      width: 48px;
-      height: 48px;
-      stroke: var(--text-muted);
-      margin-bottom: 1rem;
-    }
+    .empty-state { text-align: center; padding: 4rem 1rem; color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="brand">
       <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -260,29 +249,40 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main id="main-content">
     <div class="loader" id="page-loader"></div>
   </main>
 
   <script>
-    // 1. Supabase Project Configuration (Project Settings -> API -> anon public)
     const SUPABASE_URL = "https://hfprnenkpqekftgxqgrp.supabase.co";
+    // Make sure to paste your real anon public key from Project Settings -> API:
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmcHJuZW5rcHFla2Z0Z3hxZ3JwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NTgyOTAsImV4cCI6MjEwNzUzNDI5MH0.bcVU-LtnPAV3EVu6k0f33F2R2qoqh1ZTvKW2KGPKuUg";
 
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    let supabase = null;
 
     async function init() {
       const mainContent = document.getElementById('main-content');
       const userProfile = document.getElementById('user-profile');
       const userEmailSpan = document.getElementById('user-email');
 
+      if (!window.supabase) {
+        throw new Error("Supabase library failed to load from CDN. Please check your internet connection.");
+      }
+
+      if (SUPABASE_ANON_KEY.includes("PASTE_YOUR")) {
+        throw new Error("SUPABASE_ANON_KEY is not configured in index.html. Please paste your anon public key.");
+      }
+
+      // Initialize Supabase safely
+      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
       try {
-        // Check current session
-        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        const { data, error: sessionError } = await supabase.auth.getSession();
         if (sessionError) throw sessionError;
 
-        // If not logged in -> Show Google Sign-in screen (No app names exposed!)
+        const session = data?.session;
+
+        // If not logged in -> Show Google Sign-in screen (No app names exposed)
         if (!session) {
           userProfile.style.display = 'none';
           mainContent.innerHTML = `
@@ -299,10 +299,11 @@
           `;
 
           document.getElementById('login-btn').addEventListener('click', async () => {
-            await supabase.auth.signInWithOAuth({
+            const { error } = await supabase.auth.signInWithOAuth({
               provider: 'google',
               options: { redirectTo: window.location.href }
             });
+            if (error) alert("Sign-in error: " + error.message);
           });
           return;
         }
@@ -321,26 +322,28 @@
           <div class="apps-list" id="apps-list" style="display: none;"></div>
         `;
 
-        // 2. Dynamically ask Supabase which apps THIS user has permission to see
+        // 2. Fetch permitted apps for this user from get_my_apps()
         const { data: userApps, error: rpcError } = await supabase.rpc('get_my_apps');
 
-        if (rpcError) throw rpcError;
+        if (rpcError) {
+          throw new Error("Failed to load permissions: " + rpcError.message);
+        }
 
         const allowedAppList = (userApps || []).map(row => row.app_name);
 
         if (allowedAppList.length === 0) {
-          document.getElementById('main-content').innerHTML += `
+          mainContent.innerHTML += `
             <div class="empty-state">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <h3>No Apps Assigned</h3>
-              <p>Your Google account (${userEmail}) has not been granted access to any APK releases yet.</p>
+              <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <h3 style="margin-top:1rem;color:var(--text-main);">No Apps Assigned</h3>
+              <p style="margin-top:0.5rem;color:var(--text-muted);">Your account (${userEmail}) has not been granted access to any APKs yet.</p>
             </div>
           `;
           document.getElementById('fetching-loader').style.display = 'none';
           return;
         }
 
-        // 3. For each permitted app, fetch latest release and generate signed URL
+        // 3. For each permitted app, generate signed download URL
         const appsContainer = document.getElementById('apps-list');
         let renderedCount = 0;
 
@@ -397,28 +400,29 @@
 
       } catch (err) {
         mainContent.innerHTML = `
-          <div class="card" style="margin: 3rem auto;">
-            <p style="color: var(--danger); margin-bottom: 1rem;">${err.message}</p>
-            <button class="btn-google" onclick="signOut()">Sign in again</button>
+          <div class="card" style="margin: 3rem auto; text-align: left;">
+            <p style="color: var(--danger); margin-bottom: 1rem; word-break: break-all;"><strong>Error:</strong> ${err.message}</p>
+            <button class="btn-download" style="width:100%;" onclick="signOut()">Sign out & try again</button>
           </div>
         `;
       }
     }
 
-    // Generic formatter without exposing app names (e.g. 'batteryapp' -> 'Battery App')
     function formatAppName(str) {
       if (!str) return '';
-      return str
-        .replace(/app$/i, ' App')
-        .replace(/^./, c => c.toUpperCase());
+      return str.replace(/app$/i, ' App').replace(/^./, c => c.toUpperCase());
     }
 
     async function signOut() {
-      await supabase.auth.signOut();
+      if (supabase) await supabase.auth.signOut();
       window.location.reload();
     }
 
-    document.addEventListener('DOMContentLoaded', init);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   </script>
 </body>
 </html>
