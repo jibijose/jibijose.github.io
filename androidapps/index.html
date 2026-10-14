@@ -293,13 +293,19 @@
           `;
 
           document.getElementById('login-btn').addEventListener('click', async () => {
+            const cleanUrl = window.location.origin + window.location.pathname;
             const { error } = await supabaseClient.auth.signInWithOAuth({
               provider: 'google',
-              options: { redirectTo: window.location.href }
+              options: { redirectTo: cleanUrl }
             });
             if (error) alert("Sign-in error: " + error.message);
           });
           return;
+        }
+
+        // Clean any token hash from the address bar for a neat URL
+        if (window.location.hash.includes('access_token')) {
+          history.replaceState(null, document.title, window.location.pathname);
         }
 
         const userEmail = session.user.email;
@@ -407,8 +413,15 @@
     }
 
     async function handleSignOut() {
-      if (supabaseClient) await supabaseClient.auth.signOut();
-      window.location.reload();
+      if (supabaseClient) {
+        try {
+          await supabaseClient.auth.signOut();
+        } catch (e) {
+          console.warn("Sign-out error:", e);
+        }
+      }
+      // Navigate cleanly without any stale hash or tokens
+      window.location.href = window.location.origin + window.location.pathname;
     }
 
     if (document.readyState === 'loading') {
