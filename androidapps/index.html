@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>APK Download Portal</title>
+  
+  <!-- On-screen error trap to show any hidden errors -->
+  <script>
+    window.onerror = function(msg, url, line) {
+      setTimeout(function() {
+        var el = document.getElementById('status-area');
+        if (el) el.innerHTML = '<p style="color:#f87171;text-align:left;font-size:0.85rem;word-break:break-all;"><strong>Error (line ' + line + '):</strong><br>' + msg + '</p>';
+      }, 100);
+      return false;
+    };
+  </script>
+
   <!-- Load Supabase JS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -23,7 +36,7 @@
       border-radius: 1rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       text-align: center;
-      max-width: 420px;
+      max-width: 440px;
       width: 90%;
     }
     h2 { margin-top: 0; color: #38bdf8; }
@@ -43,12 +56,11 @@
       gap: 0.5rem;
       margin-top: 1rem;
       text-decoration: none;
-      transition: background 0.2s;
       width: 100%;
       box-sizing: border-box;
     }
     .btn:hover { background: #0ea5e9; }
-    .error { color: #f87171; margin-top: 1rem; font-size: 0.9rem; }
+    .error { color: #f87171; font-size: 0.9rem; text-align: left; word-break: break-all; }
     .loader {
       display: inline-block;
       width: 24px;
@@ -68,32 +80,45 @@
   <h2>APK Download Portal</h2>
   <div id="status-area">
     <div class="loader"></div>
-    <p>Loading portal...</p>
+    <p id="status-text">Connecting to Supabase...</p>
   </div>
 </div>
 
 <script>
-  // 1. Supabase Project Configuration
+  // 1. Supabase credentials
   const SUPABASE_URL = "https://hfprnenkpqekftgxqgrp.supabase.co";
   
-  // NOTE: Paste your full anon public key from Supabase Dashboard -> Project Settings -> API
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmcHJuZW5rcHFla2Z0Z3hxZ3JwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NTgyOTAsImV4cCI6MjEwNzUzNDI5MH0.bcVU-LtnPAV3EVu6k0f33F2R2qoqh1ZTvKW2KGPKuUg";
-
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  // Replace with your real anon public key:
+  const SUPABASE_ANON_KEY = "PASTE_YOUR_FULL_ANON_PUBLIC_KEY_HERE";
 
   const urlParams = new URLSearchParams(window.location.search);
   const requestedApp = urlParams.get('app') || 'batteryapp';
 
   async function init() {
     const statusArea = document.getElementById('status-area');
+    const statusText = document.getElementById('status-text');
+
+    if (!window.supabase) {
+      statusArea.innerHTML = '<p class="error">Failed to load Supabase SDK from CDN. Please check your internet connection or ad-blocker.</p>';
+      return;
+    }
+
+    if (SUPABASE_ANON_KEY.includes("PASTE_YOUR")) {
+      statusArea.innerHTML = '<p class="error">Please open index.html and replace <strong>PASTE_YOUR_FULL_ANON_PUBLIC_KEY_HERE</strong> with your real anon public key from Supabase.</p>';
+      return;
+    }
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     try {
-      // Check current session
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      statusText.innerText = "Checking Google login session...";
+      
+      const { data, error: sessionError } = await supabase.auth.getSession();
       if (sessionError) throw sessionError;
 
+      const session = data?.session;
+
       if (!session) {
-        // Show Google sign-in button
         statusArea.innerHTML = `
           <p>Sign in with your Google account to download <strong>${requestedApp}</strong>.</p>
           <button class="btn" id="login-btn">
@@ -116,7 +141,7 @@
         return;
       }
 
-      // Signed in: verify permissions and start download
+      // User is logged in
       const userEmail = session.user.email;
       statusArea.innerHTML = `
         <div class="loader"></div>
@@ -158,7 +183,12 @@
     }
   }
 
-  init();
+  // Run when document is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 </script>
 </body>
 </html>
