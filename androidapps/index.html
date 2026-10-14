@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Release Download</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #1e293b;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+    }
+    h2 { margin-top: 0; color: #38bdf8; }
+    p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; }
+    .btn {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #0ea5e9; }
+    .error { color: #f87171; margin-top: 1rem; font-size: 0.9rem; }
+    .loader {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #38bdf8;
+      animation: spin 1s ease-in-out infinite;
+      margin-top: 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>APK Download Portal</h2>
+  <div id="status-area">
+    <div class="loader"></div>
+    <p id="status-text">Checking authentication...</p>
+  </div>
+</div>
+
+<script>
+  // 1. Supabase Configuration (Use your anon/public key here - SAFE for browsers)
+  const SUPABASE_URL = "https://hfprnenkpqekftgxqgrp.supabase.co";
+  const SUPABASE_ANON_KEY = "<YOUR_SUPABASE_ANON_KEY>"; // From Project Settings -> API -> anon public
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // 2. Read '?app=batteryapp' from the URL query params
+  const urlParams = new URLSearchParams(window.location.search);
+  const requestedApp = urlParams.get('app') || 'batteryapp';
+
+  async function handleDownloadFlow() {
+    const statusText = document.getElementById('status-text');
+    const statusArea = document.getElementById('status-area');
+
+    // Check if the user is already signed in
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session) {
+      statusText.innerText = "Redirecting to Google sign in...";
+      
+      // Auto-redirect to Google Auth
+      await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.href // Returns right back to this URL after login
+        }
+      });
+      return;
+    }
+
+    // User is logged in!
+    const userEmail = session.user.email;
+    statusText.innerText = `Signed in as ${userEmail}. Checking permissions for '${requestedApp}'...`;
+
+    try {
+      // Find the latest APK in the app's folder
+      const { data: files, error: listError } = await supabase.storage
+        .from('apks')
+        .list(requestedApp, { limit: 10, sortBy: { column: 'created_at', order: 'desc' } });
+
+      if (listError || !files || files.length === 0) {
+        throw new Error("No release APK found or you do not have permission to download this app.");
+      }
+
+      const latestApk = files[0].name;
+      const fullPath = `${requestedApp}/${latestApk}`;
+
+      // Generate the 5-minute download link
+      const { data: signData, error: signError } = await supabase.storage
+        .from('apks')
+        .createSignedUrl(fullPath, 300);
+
+      if (signError || !signData?.signedUrl) {
+        throw new Error("Access Denied: Your Google account is not authorized to download this app.");
+      }
+
+      // Automatically trigger download
+      statusArea.innerHTML = `
+        <p style="color: #4ade80;">Permission verified!</p>
+        <p>Downloading <strong>${latestApk}</strong>...</p>
+        <a class="btn" href="${signData.signedUrl}">Click here if download doesn't start</a>
+      `;
+      window.location.href = signData.signedUrl;
+
+    } catch (err) {
+      statusArea.innerHTML = `
+        <p class="error">${err.message}</p>
+        <button class="btn" onclick="supabase.auth.signOut().then(() => location.reload())">Sign in with different account</button>
+      `;
+    }
+  }
+
+  handleDownloadFlow();
+</script>
+</body>
+</html>
